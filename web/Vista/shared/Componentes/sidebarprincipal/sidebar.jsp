@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <a href="ControladorEmpresas?menu=Empresas&accion=Listar"> Ver Empresas</a>
+        <br>
+        <a href="ControladorEmpleado?menu=Empleado&accion=Listar"> Ver Empleados</a>
     </body>
 </html>

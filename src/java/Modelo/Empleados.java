@@ -15,6 +15,7 @@ public class Empleados {
     private int IdTipoEmpleado;
     private String TipoEmpleado;
     private int IdEmpresaTerciaria;
+    private String EmpresaTercearia;
     private String TipoDocumento;
     private String NumeroDocumento;
     private String Telefono;
@@ -26,13 +27,14 @@ public class Empleados {
     public Empleados() {
     }
 
-    public Empleados(int Id, String Nombres, String Apellidos, int IdTipoEmpleado, String TipoEmpleado, int IdEmpresaTerciaria, String TipoDocumento, String NumeroDocumento, String Telefono, String Correo, String Direccion, String TipoLicencia, String NumeroLicencia) {
+    public Empleados(int Id, String Nombres, String Apellidos, int IdTipoEmpleado, String TipoEmpleado, int IdEmpresaTerciaria, String EmpresaTercearia, String TipoDocumento, String NumeroDocumento, String Telefono, String Correo, String Direccion, String TipoLicencia, String NumeroLicencia) {
         this.Id = Id;
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
         this.IdTipoEmpleado = IdTipoEmpleado;
         this.TipoEmpleado = TipoEmpleado;
         this.IdEmpresaTerciaria = IdEmpresaTerciaria;
+        this.EmpresaTercearia = EmpresaTercearia;
         this.TipoDocumento = TipoDocumento;
         this.NumeroDocumento = NumeroDocumento;
         this.Telefono = Telefono;
@@ -88,6 +90,14 @@ public class Empleados {
 
     public void setIdEmpresaTerciaria(int IdEmpresaTerciaria) {
         this.IdEmpresaTerciaria = IdEmpresaTerciaria;
+    }
+
+    public String getEmpresaTercearia() {
+        return EmpresaTercearia;
+    }
+
+    public void setEmpresaTercearia(String EmpresaTercearia) {
+        this.EmpresaTercearia = EmpresaTercearia;
     }
 
     public String getTipoDocumento() {
@@ -146,6 +156,5 @@ public class Empleados {
         this.NumeroLicencia = NumeroLicencia;
     }
 
-    
     
 }

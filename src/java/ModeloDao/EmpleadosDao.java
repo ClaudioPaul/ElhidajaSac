@@ -50,7 +50,7 @@ public class EmpleadosDao {
     }
     
     public List<Empleados> listar() {
-        ArrayList<Empleados> listarEmpresas =new ArrayList();
+        ArrayList<Empleados> listaEmpleados =new ArrayList();
         Empleados empleados;
         try {
             Connection accesoBD = conexion.getConexion();
@@ -61,11 +61,16 @@ public class EmpleadosDao {
                 empleados.setId(rs.getInt(1));
                 empleados.setNombres(rs.getString(2));
                 empleados.setApellidos(rs.getString(3));
-                listarEmpresas.add(empleados);
+                empleados.setTipoEmpleado(rs.getString(4));
+                empleados.setEmpresaTercearia(rs.getString(5));
+                empleados.setNumeroDocumento(rs.getString(6));
+                empleados.setTelefono(rs.getString(7));
+                empleados.setCorreo(rs.getString(8));
+                listaEmpleados.add(empleados);
             }
         } catch (Exception e) {
             
         }
-        return listarEmpresas;
+        return listaEmpleados;
     }
 }

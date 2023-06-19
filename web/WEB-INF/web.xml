@@ -11,7 +11,31 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>
-          Vista\Modules\Dashboard\Componentes\Page\Dashboard\Dashboard.jsp
+          Vista\Modules\Login\Componentes\Page\Login\Login.jsp
         </welcome-file>
     </welcome-file-list>
+    <servlet>
+        <servlet-name>Validar</servlet-name>
+        <servlet-class>Controlador.Validar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Validar</servlet-name>
+        <url-pattern>/Validar</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorEmpresas</servlet-name>
+        <servlet-class>Controlador.ControladorEmpresas</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorEmpresas</servlet-name>
+        <url-pattern>/ControladorEmpresas</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorEmpleado</servlet-name>
+        <servlet-class>Controlador.ControladorEmpleado</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorEmpleado</servlet-name>
+        <url-pattern>/ControladorEmpleado</url-pattern>
+    </servlet-mapping>
 </web-app>
