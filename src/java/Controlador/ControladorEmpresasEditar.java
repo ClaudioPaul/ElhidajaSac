@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorEmpresas extends HttpServlet {
+public class ControladorEmpresasEditar extends HttpServlet {
 
     
     ApiDNIRUC apiD = new ApiDNIRUC();
@@ -43,19 +43,34 @@ public class ControladorEmpresas extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("Empresas")){
+            if(menu.equals("EmpresasEditar")){
                 switch(accion){
-                    case "Listar":
-                        List lista = empresasDao.listar();
-                        request.setAttribute("listaEmpresas", lista);
-                    break;
-                    case "Eliminar":
+                    case "Editar":
                         idEmpresa = Integer.parseInt(request.getParameter("id"));
-                        empresasDao.Eliminar(idEmpresa);
+                        Empresas empresa = empresasDao.Seleccionar(idEmpresa);
+                        request.setAttribute("listaEmpresa", empresa);
+                    break;
+                    case "Actualizar":
+                        String Rucs  = request.getParameter("txtRuc");
+                        String RasonSocials  = request.getParameter("txtRazonsocial");
+                        String Direccions  = request.getParameter("txtDireccion");
+                        String NombreRepresentantes  = request.getParameter("txtNombre");
+                        String ApellidoRepresentantes  = request.getParameter("txtApellidos");
+                        String Telefonos  = request.getParameter("txtTelefono");
+                        String Correos  = request.getParameter("txtCorreo");
+                        empresas.setRuc(Rucs);
+                        empresas.setRazonSocial(RasonSocials);
+                        empresas.setDireccion(Direccions);
+                        empresas.setNombreRepresentante(NombreRepresentantes);
+                        empresas.setApellidoRepresentante(ApellidoRepresentantes);
+                        empresas.setTelefono(Telefonos);
+                        empresas.setCorreo(Correos);
+                        empresas.setId(idEmpresa);
+                        empresasDao.Editar(empresas);
                         request.getRequestDispatcher("ControladorEmpresas?menu=Empresas&accion=Listar").forward(request, response);
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/ListadoDatosClientes/MostrarClientes.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/EditarClientes/EditarClientes.jsp").forward(request, response);
             }
     }
 

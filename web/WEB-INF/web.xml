@@ -31,6 +31,22 @@
         <url-pattern>/ControladorEmpresas</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>ControladorEmpresasRegistro</servlet-name>
+        <servlet-class>Controlador.ControladorEmpresasRegistro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorEmpresasRegistro</servlet-name>
+        <url-pattern>/ControladorEmpresasRegistro</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorEmpresasEditar</servlet-name>
+        <servlet-class>Controlador.ControladorEmpresasEditar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorEmpresasEditar</servlet-name>
+        <url-pattern>/ControladorEmpresasEditar</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ControladorEmpleado</servlet-name>
         <servlet-class>Controlador.ControladorEmpleado</servlet-class>
     </servlet>

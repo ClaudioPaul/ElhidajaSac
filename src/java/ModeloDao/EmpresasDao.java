@@ -108,4 +108,15 @@ public class EmpresasDao {
         }
         return false;
     }
+    
+    public boolean Eliminar(int IdEmpresas) {
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call EliminarEmpresas(?)}");
+            cs.setInt(1, IdEmpresas);
+            cs.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
+    }
 }

@@ -32,7 +32,10 @@
         <p>Clientes</p>
       </div>
       <div class="grupo-boton-nuevo">
-        <button><i class="uil uil-plus"></i>Nuevo</button>
+        <button onclick="window.location.href='ControladorEmpresasRegistro?menu=EmpresasRegistro&accion=Formilario'">
+            <i class="uil uil-plus"></i>
+            Nuevo
+        </button>
       </div>
     </article>
     <article class="opciones-listado">
@@ -70,12 +73,14 @@
                 <td>${empresa.getTelefono()}</td>
                 <td>${empresa.getCorreo()}</td>
                 <td>
-                  <button class="btn-option-table btn-editar">
+                  <button onclick="window.location.href='ControladorEmpresasEditar?menu=EmpresasEditar&accion=Editar&id=${empresa.getId()}'" 
+                          class="btn-option-table btn-editar">
                     <i class="uil uil-pen"></i>
                   </button>
                 </td>
                 <td>
-                  <button class="btn-option-table btn-eliminar">
+                  <button onclick="window.location.href='ControladorEmpresas?menu=Empresas&accion=Eliminar&id=${empresa.getId()}'"
+                          class="btn-option-table btn-eliminar">
                     <i class="uil uil-trash"></i>
                   </button>
                 </td>
