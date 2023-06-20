@@ -119,4 +119,31 @@ public class EmpresasDao {
         }
         return false;
     }
+    
+    public List<Empresas> Buscar(String RazonSocial) {
+        ArrayList<Empresas> listarEmpresas =new ArrayList();
+        Empresas empresas;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call BuscarEmpresas(?)}");
+            cs.setString(1, RazonSocial);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                empresas = new Empresas();
+                empresas.setId(rs.getInt(1));
+                empresas.setRuc(rs.getString(2));
+                empresas.setRazonSocial(rs.getString(3));
+                empresas.setNombreRepresentante(rs.getString(4));
+                empresas.setApellidoRepresentante(rs.getString(5));
+                empresas.setDireccion(rs.getString(6));
+                empresas.setTelefono(rs.getString(7));
+                empresas.setCorreo(rs.getString(8));
+                listarEmpresas.add(empresas);
+            }
+            
+        } catch (Exception e) {
+            
+        }
+        return listarEmpresas;
+    }
 }

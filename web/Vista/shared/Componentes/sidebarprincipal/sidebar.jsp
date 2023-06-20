@@ -146,8 +146,6 @@
         </div>
       <i class="fa-solid fa-bars" id="sidebar-close"></i>
     </nav>
-    <div class="mensaje">
-    </div>
     <main class="main">
       <iframe
         name="myFrame"

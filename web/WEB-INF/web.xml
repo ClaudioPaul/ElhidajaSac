@@ -54,4 +54,20 @@
         <servlet-name>ControladorEmpleado</servlet-name>
         <url-pattern>/ControladorEmpleado</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorEmpleadoRegistro</servlet-name>
+        <servlet-class>Controlador.ControladorEmpleadoRegistro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorEmpleadoRegistro</servlet-name>
+        <url-pattern>/ControladorEmpleadoRegistro</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorEmpleadoEditar</servlet-name>
+        <servlet-class>Controlador.ControladorEmpleadoEditar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorEmpleadoEditar</servlet-name>
+        <url-pattern>/ControladorEmpleadoEditar</url-pattern>
+    </servlet-mapping>
 </web-app>

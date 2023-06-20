@@ -12,8 +12,7 @@ package Modelo;
 public class ApiReniecSunat {
     private String dni;
     private String nombres;
-    private String apellidoP;
-    private String apellidoM;
+    private String apellidos;
     private String ruc;
     private String rasonsocial;
     private String direccion;
@@ -21,16 +20,16 @@ public class ApiReniecSunat {
     public ApiReniecSunat() {
     }
 
-    public ApiReniecSunat(String dni, String nombres, String apellidoP, String apellidoM, String ruc, String rasonsocial, String direccion) {
+    public ApiReniecSunat(String dni, String nombres, String apellidos, String ruc, String rasonsocial, String direccion) {
         this.dni = dni;
         this.nombres = nombres;
-        this.apellidoP = apellidoP;
-        this.apellidoM = apellidoM;
+        this.apellidos = apellidos;
         this.ruc = ruc;
         this.rasonsocial = rasonsocial;
         this.direccion = direccion;
     }
 
+    
     public String getDni() {
         return dni;
     }
@@ -47,20 +46,12 @@ public class ApiReniecSunat {
         this.nombres = nombres;
     }
 
-    public String getApellidoP() {
-        return apellidoP;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellidoP(String apellidoP) {
-        this.apellidoP = apellidoP;
-    }
-
-    public String getApellidoM() {
-        return apellidoM;
-    }
-
-    public void setApellidoM(String apellidoM) {
-        this.apellidoM = apellidoM;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getRuc() {
@@ -87,5 +78,6 @@ public class ApiReniecSunat {
         this.direccion = direccion;
     }
 
+    
     
 }

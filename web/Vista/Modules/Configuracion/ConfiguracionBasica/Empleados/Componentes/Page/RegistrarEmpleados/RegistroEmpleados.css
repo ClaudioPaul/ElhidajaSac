@@ -3,10 +3,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 18 jun. 2023, 23:14:37
+    Created on : 18 jun. 2023, 23:31:54
     Author     : CLAUDIO CRUZADO
 */
-    .modal {
+
+ .modal {
         width: 50%;
         border: 1px solid black;
         border-radius: 5px;
@@ -16,10 +17,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     h2{
         font-weight: bold;
     }
+   
     
     .FormularioBuscar {
         text-align: center;
-        margin-bottom: 5px;
         /* Establece cualquier otro estilo que desees para el contenedor del formulario de búsqueda */
     }
     
@@ -48,7 +49,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     }
     
     .ContenerdorFormularioRegistro {
-        width: 90%;
+        width: 92%;
+        margin-top: 5px;
     }
     
     .FormularioRegistro {
@@ -67,9 +69,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         text-align: left;
     }
     
+    .GruposSelect .Enlinea{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+        width: 90%;
+    }
+    
+     .GruposSelect {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+    }
+    
+    .GruposSelect .Enlinea label{
+        margin-bottom: 5px;
+        text-align: left;
+    }
+    
+    .GruposSelect .Enlinea select{
+        padding: 5px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
     .Grupos input[type="text"],
     .Grupos input[type="number"],
-    .Grupos input[type="email"] {
+    .Grupos input[type="email"],
+    .Grupos select {
         padding: 5px;
         font-size: 14px;
         border: 1px solid #ccc;
@@ -99,4 +127,3 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     .Botones input[type="submit"]:hover {
         background-color: #847D7D;
     }
-    

@@ -23,15 +23,18 @@
         />
     </head>
     <body>
+        <br>
+        <br>
+        <br>
         <header>
-            <h2>Configuración / Clientes</h2>
+            <h2>Configuración / Empresas</h2>
         </header>
     <article class="encabezado-principal">
       <div class="grupo-principal">
         <div class="icono-encabezado">
           <i class="uil uil-constructor"></i>
         </div>
-        <p>Clientes</p>
+        <p>Empresas</p>
       </div>
       <div class="grupo-boton-nuevo">
         <button onclick="window.location.href='ControladorEmpresasRegistro?menu=EmpresasRegistro&accion=Formilario'">
@@ -44,10 +47,13 @@
       <div class="grupo-btn-opciones">
         <button><i class="uil uil-download-alt"></i>Descargar PDF</button>
       </div>
-      <div class="grupo-buscar">
-        <input type="search" placeholder="Ingresar la Razón Social a Buscar" value="" />
-        <button><i class="uil uil-search"></i>Buscar</button>
-      </div>
+      <form action="ControladorEmpresas?menu=Empresas" method="POST">  
+        <div class="grupo-buscar">
+          <input type="search" placeholder="Ingresar la Razón Social a Buscar" name="txtBuscar" />
+          <button type="submit" name="accion" value="Buscar"><i class="uil uil-search"></i>Buscar</button>
+          <button type="submit" name="accion" value="Cancelar"><i class="uil uil-times-circle"></i></button>
+        </div>
+       </form>
     </article>
 
     <article class="bg-container-body">

@@ -56,46 +56,6 @@ public class ControladorEmpleado extends HttpServlet {
                     case "Listar":
                         List listaEmpelado = empleadoDao.listar();
                         request.setAttribute("listaEmpelados", listaEmpelado);
-                        List listaTipo= tipoDao.listar();
-                        request.setAttribute("listaTipo", listaTipo);
-                        List lista = empresasDao.listar();
-                        request.setAttribute("listaEmpresas", lista);
-                    break;
-                    case "Buscar":
-                        BuscarDNI = request.getParameter("txtBuscarRuc");
-                        ApiReniecSunat api = apiD.ConsultarRUC(BuscarDNI);
-                        request.setAttribute("Api", api);
-                        request.getRequestDispatcher("ControladorEmpleado?menu=Empleado&accion=Listar").forward(request, response);
-                    break;
-                    case "Agregar":
-                        String Nombres  = request.getParameter("txtNombres");
-                        String Apellidos  = request.getParameter("txtApellidos");
-                        String TipoEmpleado  = request.getParameter("txtTipoEmpelado");
-                        String Empresa  = request.getParameter("txtEmpresa");
-                        String TipoDoc  = request.getParameter("txtTipoDoc");
-                        String NumeroDoc  = request.getParameter("txtDni");
-                        String Telefono  = request.getParameter("txtTelefono");
-                        String Correo  = request.getParameter("txtCorreo");
-                        String Direccion  = request.getParameter("txtDireccion");
-                        String tipoLicencia = "Ninguna";
-                        String numeroLicencia = "123456789";
-                        empleado.setNombres(Nombres);
-                        empleado.setApellidos(Apellidos);
-                        empleado.setIdTipoEmpleado(Integer.parseInt(TipoEmpleado));
-                        empleado.setIdEmpresaTerciaria(Integer.parseInt(Empresa));
-                        empleado.setTipoDocumento(TipoDoc);
-                        empleado.setNumeroDocumento(NumeroDoc);
-                        empleado.setTelefono(Telefono);
-                        empleado.setCorreo(Correo);
-                        empleado.setDireccion(Direccion);
-                        empleado.setTipoLicencia(tipoLicencia);
-                        empleado.setNumeroLicencia(numeroLicencia);
-                        empleadoDao.Registrar(empleado);
-                        request.getRequestDispatcher("ControladorEmpleado?menu=Empleado&accion=Listar").forward(request, response);
-                    break;
-                    case "Editar":                        
-                    break;
-                    case "Actualizar":
                     break;
                     case "Eliminar":
                     break;

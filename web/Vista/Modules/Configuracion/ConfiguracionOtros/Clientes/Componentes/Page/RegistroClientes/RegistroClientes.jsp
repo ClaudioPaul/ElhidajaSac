@@ -14,21 +14,29 @@
         />
     </head>
     <body>
+        <br>
+        <br>
+        <br>
+        <br>
+        <center>
         <div id="myModal" class="modal">
+            <center><h2>REGISTRAR EMPRESAS</h2></center>
             <div class="modal-content">
-                <form class="ConsultarRuc" action="ControladorEmpresasRegistro?menu=EmpresasRegistro" method="POST">
-                  <input type="text" name="txtBuscarRuc" placeholder="Ingresar RUC">
-                  <input type="submit" name="accion" value="Buscar" id="buscarBtnModal">
-                </form>
+                <div class="FormularioBuscar">
+                    <form class="ConsultarRuc" action="ControladorEmpresasRegistro?menu=EmpresasRegistro" method="POST">
+                      <input type="text" name="txtBuscarRuc" placeholder="Ingresar RUC">
+                      <input type="submit" name="accion" value="Buscar" id="buscarBtnModal">
+                    </form>
+                </div>
                 <div class="ContenerdorFormularioRegistro">
                     <form class="FormularioRegistro" action="ControladorEmpresasRegistro?menu=EmpresasRegistro" method="POST">
                       <div class="Grupos">
                         <label>Ruc:</label>
-                        <input type="text" value="${Api.getRuc()}" name="txtRuc" required disabled>
+                        <input type="text" value="${Api.getRuc()}" name="txtRuc" required>
                       </div>
                       <div class="Grupos">
                         <label>Razón Social:</label>
-                        <input type="text" value="${Api.getRasonsocial()}" name="txtRazonsocial" required disabled>
+                        <input type="text" value="${Api.getRasonsocial()}" name="txtRazonsocial" required>
                       </div>
                       <div class="Grupos">
                         <label>Dirección de la Empresa:</label>
@@ -50,14 +58,13 @@
                         <label>Correo:</label>
                         <input type="email" name="txtCorreo" required>
                       </div>
-                      <center>
                         <div class="Botones">
                           <input type="submit" name="accion" value="Agregar" id="agregarBtn">
                         </div>
-                      </center>
                     </form>
                 </div>
             </div>
         </div>
+    </center>
     </body>
 </html>

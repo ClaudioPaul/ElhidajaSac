@@ -6,9 +6,11 @@
 package Controlador;
 
 import Modelo.ApiReniecSunat;
+import Modelo.Empleados;
 import Modelo.Empresas;
 import Modelo.TipoEmpleado;
 import ModeloDao.ApiDNIRUC;
+import ModeloDao.EmpleadosDao;
 import ModeloDao.EmpresasDao;
 import ModeloDao.TipoEmpleadoDao;
 import jakarta.servlet.ServletException;
@@ -23,17 +25,19 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorEmpresasRegistro extends HttpServlet {
+public class ControladorEmpleadoEditar extends HttpServlet {
 
     
     ApiDNIRUC apiD = new ApiDNIRUC();
-    Empresas empresas = new Empresas();
-    EmpresasDao empresasDao = new EmpresasDao();
     TipoEmpleado tipo = new TipoEmpleado();
     TipoEmpleadoDao tipoDao = new TipoEmpleadoDao();
+    Empresas empresas = new Empresas();
+    EmpresasDao empresasDao = new EmpresasDao();
+    Empleados empleado = new Empleados();
+    EmpleadosDao empleadoDao = new EmpleadosDao();
             
-    int idEmpresa;
-    String BuscarRUC;
+    int idEmpleado;
+    String BuscarDNI;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -47,39 +51,25 @@ public class ControladorEmpresasRegistro extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("EmpresasRegistro")){
+            if(menu.equals("EmpleadoEditar")){
                 switch(accion){
-                    case "Formilario":
+                    case "Editar":
                         List listaTipo= tipoDao.listar();
                         request.setAttribute("listaTipo", listaTipo);
                         List lista = empresasDao.listar();
                         request.setAttribute("listaEmpresas", lista);
+                        idEmpleado = Integer.parseInt(request.getParameter("id"));
+                        Empleados emleado = empleadoDao.Seleccionar(idEmpleado);
+                        request.setAttribute("listaEmpleados", emleado);
                     break;
-                    case "Buscar":
-                        BuscarRUC = request.getParameter("txtBuscarRuc");
-                        ApiReniecSunat api = apiD.ConsultarRUC(BuscarRUC);
-                        request.setAttribute("Api", api);
+                    case "Actualizar":
                     break;
-                    case "Agregar":
-                        String Ruc  = request.getParameter("txtRuc");
-                        String RasonSocial  = request.getParameter("txtRazonsocial");
-                        String Direccion  = request.getParameter("txtDireccion");
-                        String NombreRepresentante  = request.getParameter("txtNombre");
-                        String ApellidoRepresentante  = request.getParameter("txtApellidos");
-                        String Telefono  = request.getParameter("txtTelefono");
-                        String Correo  = request.getParameter("txtCorreo");
-                        empresas.setRuc(Ruc);
-                        empresas.setRazonSocial(RasonSocial);
-                        empresas.setDireccion(Direccion);
-                        empresas.setNombreRepresentante(NombreRepresentante);
-                        empresas.setApellidoRepresentante(ApellidoRepresentante);
-                        empresas.setTelefono(Telefono);
-                        empresas.setCorreo(Correo);
-                        empresasDao.Registrar(empresas);
-                        request.getRequestDispatcher("ControladorEmpresas?menu=Empresas&accion=Listar").forward(request, response);
+                    case "Eliminar":
+                    break;
+                    case "Cancelar":
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/RegistroClientes/RegistroClientes.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionBasica/Empleados/Componentes/Page/EditarEmpleados/EditarEmpleados.jsp").forward(request, response);
             }
     }
 

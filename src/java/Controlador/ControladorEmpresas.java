@@ -29,7 +29,7 @@ public class ControladorEmpresas extends HttpServlet {
     EmpresasDao empresasDao = new EmpresasDao();
             
     int idEmpresa;
-    String BuscarRUC;
+    String BuscarEmpresas;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,6 +52,14 @@ public class ControladorEmpresas extends HttpServlet {
                     case "Eliminar":
                         idEmpresa = Integer.parseInt(request.getParameter("id"));
                         empresasDao.Eliminar(idEmpresa);
+                        request.getRequestDispatcher("ControladorEmpresas?menu=Empresas&accion=Listar").forward(request, response);
+                    break;
+                    case "Buscar":
+                        BuscarEmpresas =request.getParameter("txtBuscar");
+                        List listas = empresasDao.Buscar(BuscarEmpresas);
+                        request.setAttribute("listaEmpresas", listas);
+                    break;
+                    case "Cancelar":
                         request.getRequestDispatcher("ControladorEmpresas?menu=Empresas&accion=Listar").forward(request, response);
                     break;
                 }

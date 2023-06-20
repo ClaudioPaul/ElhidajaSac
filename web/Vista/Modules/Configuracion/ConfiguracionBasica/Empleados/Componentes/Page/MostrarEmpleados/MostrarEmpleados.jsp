@@ -21,6 +21,9 @@
         <title>Empleados</title>
     </head>
     <body>
+        <br>
+        <br>
+        <br>
         <header>
             <h2>Configuración / Empleados</h2>
         </header>
@@ -31,18 +34,26 @@
         </div>
         <p>Empleados</p>
       </div>
+      <form action="ControladorEmpleadoRegistro?menu=EmpleadoRegistro" method="POST">
       <div class="grupo-boton-nuevo">
-        <button><i class="uil uil-plus"></i>Nuevo</button>
+        <button type="submit" name="accion" value="Formulario">
+            <i class="uil uil-plus"></i>
+            Nuevo
+        </button>
       </div>
+      </form>
     </article>
     <article class="opciones-listado">
       <div class="grupo-btn-opciones">
         <button><i class="uil uil-download-alt"></i>Descargar PDF</button>
       </div>
-      <div class="grupo-buscar">
-        <input type="search" placeholder="Ingresar valor a buscar" value="" />
-        <button><i class="uil uil-search"></i>Buscar</button>
-      </div>
+      <form action="ControladorEmpresas?menu=Empresas" method="POST">
+        <div class="grupo-buscar">
+          <input type="search" placeholder="Ingresar valor a buscar" value="" />
+          <button type="submit" name="accion" value="Buscar"><i class="uil uil-search"></i>Buscar</button>
+          <button type="submit" name="accion" value="Cancelar"><i class="uil uil-times-circle"></i></button>
+        </div>
+      </form>
     </article>
 
     <article class="bg-container-body">
@@ -72,12 +83,14 @@
                 <td>${empresa.getTelefono()}</td>
                 <td>${empresa.getCorreo()}</td>
                 <td>
-                  <button class="btn-option-table btn-editar">
+                  <button onclick="window.location.href='ControladorEmpleadoEditar?menu=EmpleadoEditar&accion=Editar&id=${empresa.getId()}'"
+                          class="btn-option-table btn-editar">
                     <i class="uil uil-pen"></i>
                   </button>
                 </td>
                 <td>
-                  <button class="btn-option-table btn-eliminar">
+                  <button onclick="window.location.href='ControladorEmpleadoEditar?menu=EmpleadoEditar&accion=Eliminar&id=${empresa.getId()}'"
+                          class="btn-option-table btn-eliminar">
                     <i class="uil uil-trash"></i>
                   </button>
                 </td>

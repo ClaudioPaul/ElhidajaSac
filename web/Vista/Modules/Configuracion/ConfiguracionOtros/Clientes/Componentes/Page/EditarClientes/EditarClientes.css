@@ -7,3 +7,67 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : CLAUDIO CRUZADO
 */
 
+.modal {
+        width: 50%;
+        border: 1px solid black;
+        border-radius: 5px;
+        /* Establece cualquier otro estilo que desees para el modal */
+    }
+    
+    h2{
+        font-weight: bold;
+    }
+    
+    .ContenerdorFormularioRegistro {
+        width: 90%;
+    }
+    
+    .FormularioRegistro {
+        /* Establece cualquier otro estilo que desees para el formulario de registro */
+    }
+    
+    .Grupos {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+    }
+    
+    .Grupos label {
+        /* Establece cualquier otro estilo que desees para las etiquetas de los campos */
+        margin-bottom: 5px;
+        text-align: left;
+    }
+    
+    .Grupos input[type="text"],
+    .Grupos input[type="number"],
+    .Grupos input[type="email"] {
+        padding: 5px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        /* Establece cualquier otro estilo que desees para los campos de entrada */
+    }
+    
+    .Botones {
+        display: flex;
+        justify-content: center;
+        /* Establece cualquier otro estilo que desees para el contenedor de los botones */
+    }
+    
+    .Botones input[type="submit"] {
+        width: 25%;
+        padding: 8px 16px;
+        font-size: 14px;
+        background-color: #3D3C3B;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        /* Establece cualquier otro estilo que desees para los botones de submit */
+    }
+    
+    .Botones input[type="submit"]:hover {
+        background-color: #847D7D;
+    }

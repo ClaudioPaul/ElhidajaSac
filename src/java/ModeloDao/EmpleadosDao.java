@@ -73,4 +73,31 @@ public class EmpleadosDao {
         }
         return listaEmpleados;
     }
+    
+    public Empleados Seleccionar(int IdEmpleados) {
+        Empleados empleados = null;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call SeleccionarEmpleados(?)}");
+            cs.setInt(1, IdEmpleados);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                empleados = new Empleados();
+                empleados.setId(rs.getInt(1));
+                empleados.setNombres(rs.getString(2));
+                empleados.setApellidos(rs.getString(3));
+                empleados.setIdTipoEmpleado(rs.getInt(4));
+                empleados.setTipoEmpleado(rs.getString(5));
+                empleados.setIdEmpresaTerciaria(rs.getInt(6));
+                empleados.setEmpresaTercearia(rs.getString(7));
+                empleados.setNumeroDocumento(rs.getString(8));
+                empleados.setTelefono(rs.getString(9));
+                empleados.setCorreo(rs.getString(10));
+                empleados.setDireccion(rs.getString(11));
+                empleados.setTipoDocumento(rs.getString(12));
+            }
+        } catch (Exception e) {
+        }
+        return empleados;
+    }
 }

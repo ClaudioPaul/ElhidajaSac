@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,9 +6,11 @@
 package Controlador;
 
 import Modelo.ApiReniecSunat;
+import Modelo.Empleados;
 import Modelo.Empresas;
 import Modelo.TipoEmpleado;
 import ModeloDao.ApiDNIRUC;
+import ModeloDao.EmpleadosDao;
 import ModeloDao.EmpresasDao;
 import ModeloDao.TipoEmpleadoDao;
 import jakarta.servlet.ServletException;
@@ -23,17 +25,19 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorEmpresasRegistro extends HttpServlet {
+public class ControladorEmpleadoRegistro extends HttpServlet {
 
     
     ApiDNIRUC apiD = new ApiDNIRUC();
-    Empresas empresas = new Empresas();
-    EmpresasDao empresasDao = new EmpresasDao();
     TipoEmpleado tipo = new TipoEmpleado();
     TipoEmpleadoDao tipoDao = new TipoEmpleadoDao();
+    Empresas empresas = new Empresas();
+    EmpresasDao empresasDao = new EmpresasDao();
+    Empleados empleado = new Empleados();
+    EmpleadosDao empleadoDao = new EmpleadosDao();
             
-    int idEmpresa;
-    String BuscarRUC;
+    int id;
+    String BuscarDNI;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -47,39 +51,48 @@ public class ControladorEmpresasRegistro extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("EmpresasRegistro")){
+            if(menu.equals("EmpleadoRegistro")){
                 switch(accion){
-                    case "Formilario":
+                    case "Formulario":
                         List listaTipo= tipoDao.listar();
                         request.setAttribute("listaTipo", listaTipo);
                         List lista = empresasDao.listar();
                         request.setAttribute("listaEmpresas", lista);
                     break;
                     case "Buscar":
-                        BuscarRUC = request.getParameter("txtBuscarRuc");
-                        ApiReniecSunat api = apiD.ConsultarRUC(BuscarRUC);
+                        BuscarDNI = request.getParameter("txtBuscarDNI");
+                        ApiReniecSunat api = apiD.ConsultarDNI(BuscarDNI);
                         request.setAttribute("Api", api);
+                        request.getRequestDispatcher("ControladorEmpleadoRegistro?menu=EmpleadoRegistro&accion=Formulario").forward(request, response);
                     break;
                     case "Agregar":
-                        String Ruc  = request.getParameter("txtRuc");
-                        String RasonSocial  = request.getParameter("txtRazonsocial");
-                        String Direccion  = request.getParameter("txtDireccion");
-                        String NombreRepresentante  = request.getParameter("txtNombre");
-                        String ApellidoRepresentante  = request.getParameter("txtApellidos");
+                        String Nombres  = request.getParameter("txtNombres");
+                        String Apellidos  = request.getParameter("txtApellidos");
+                        String TipoEmpleado  = request.getParameter("txtTipoEmpelado");
+                        String Empresa  = request.getParameter("txtEmpresa");
+                        String TipoDoc  = request.getParameter("txtTipoDoc");
+                        String NumeroDoc  = request.getParameter("txtDni");
                         String Telefono  = request.getParameter("txtTelefono");
                         String Correo  = request.getParameter("txtCorreo");
-                        empresas.setRuc(Ruc);
-                        empresas.setRazonSocial(RasonSocial);
-                        empresas.setDireccion(Direccion);
-                        empresas.setNombreRepresentante(NombreRepresentante);
-                        empresas.setApellidoRepresentante(ApellidoRepresentante);
-                        empresas.setTelefono(Telefono);
-                        empresas.setCorreo(Correo);
-                        empresasDao.Registrar(empresas);
-                        request.getRequestDispatcher("ControladorEmpresas?menu=Empresas&accion=Listar").forward(request, response);
+                        String Direccion  = request.getParameter("txtDireccion");
+                        String tipoLicencia = "Ninguna";
+                        String numeroLicencia = "123456789";
+                        empleado.setNombres(Nombres);
+                        empleado.setApellidos(Apellidos);
+                        empleado.setIdTipoEmpleado(Integer.parseInt(TipoEmpleado));
+                        empleado.setIdEmpresaTerciaria(Integer.parseInt(Empresa));
+                        empleado.setTipoDocumento(TipoDoc);
+                        empleado.setNumeroDocumento(NumeroDoc);
+                        empleado.setTelefono(Telefono);
+                        empleado.setCorreo(Correo);
+                        empleado.setDireccion(Direccion);
+                        empleado.setTipoLicencia(tipoLicencia);
+                        empleado.setNumeroLicencia(numeroLicencia);
+                        empleadoDao.Registrar(empleado);
+                        request.getRequestDispatcher("ControladorEmpleado?menu=Empleado&accion=Listar").forward(request, response);
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/RegistroClientes/RegistroClientes.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionBasica/Empleados/Componentes/Page/RegistrarEmpleados/RegistroEmpleados.jsp").forward(request, response);
             }
     }
 

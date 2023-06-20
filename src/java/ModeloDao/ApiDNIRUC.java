@@ -21,7 +21,45 @@ import org.json.simple.parser.ParseException;
  * @author Claudio Cruzado
  */
 public class ApiDNIRUC {
-     public ApiReniecSunat ConsultarRUC(String BuscarRuc){
+    
+    public ApiReniecSunat ConsultarDNI(String BuscarApi){
+        ApiReniecSunat apidni = null;
+            try {
+                URL url = new URL("https://dniruc.apisperu.com/api/v1/dni/"
+                    + BuscarApi+"?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9."
+                    + "eyJlbWFpbCI6ImNsYXVkaW9wYXVsY2VAZ21haWwuY29tIn0."
+                    + "PA6Q3gqMNlYU3hj6HaBmaMdrQlwKwtczLtSrp7ZySRg");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.connect();
+            
+                int respodeCode = conn.getResponseCode();
+                if(respodeCode != 200){
+
+                }else{
+                    StringBuilder informationString = new StringBuilder();
+                    try (Scanner scanner = new Scanner(url.openStream())) {
+                        while(scanner.hasNext()){
+                            informationString.append(scanner.nextLine());
+                        }
+                    }
+                    JSONParser parse = new JSONParser();
+                    Object obj = parse.parse(String.valueOf(informationString));
+
+                    JSONObject datos = (JSONObject) obj;
+
+                    apidni = new ApiReniecSunat();
+                    apidni.setDni((String)datos.get("dni"));
+                    apidni.setNombres((String) datos.get("nombres"));
+                    apidni.setApellidos((String) datos.get("apellidoPaterno") + " "+ datos.get("apellidoMaterno"));
+                }
+            } catch (IOException | ParseException es) {
+                es.getMessage();
+            }
+            return apidni;
+    }
+    
+    public ApiReniecSunat ConsultarRUC(String BuscarRuc){
         ApiReniecSunat apiruc = null;
             try {
                 URL url = new URL("https://dniruc.apisperu.com/api/v1/ruc/"
