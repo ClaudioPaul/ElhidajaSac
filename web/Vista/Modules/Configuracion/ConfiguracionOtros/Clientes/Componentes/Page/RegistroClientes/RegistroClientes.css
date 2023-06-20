@@ -6,4 +6,110 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : 18 jun. 2023, 23:14:37
     Author     : CLAUDIO CRUZADO
 */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/berlin-sans-fb-demi');
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  font-family: 'Berlin Sans FB Demi', sans-serif;
+  font-size: 16px;
+}
 
+.modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  width: 40%;
+}
+
+.ConsultarRuc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.ConsultarRuc input[type="text"] {
+  flex: 1;
+  border-radius: 3px 0 0 3px;
+  padding: 5px;
+  border: 1px solid #7C8071;
+}
+
+#buscarBtnModal {
+  border-radius: 0 3px 3px 0;
+  background-color: #7C8071;
+  color: #FFF;
+  padding: 4px 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#buscarBtnModal:hover {
+  background-color: #3D3C3B;
+}
+
+.Grupos {
+  margin-bottom: 10px;
+}
+
+.Grupos label {
+  color: #3D3C3B;
+}
+
+.Grupos input[type="text"],
+.Grupos input[type="number"],
+.Grupos input[type="email"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #7C8071;
+  border-radius: 3px;
+}
+
+.Botones input[type="submit"]{
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.Botones input[type="submit"]:hover {
+  background-color: #3D3C3B;
+}
+
+.Botones input[type="submit"] {
+  background-color: #7C8071;
+  color: #FFF;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#buscarBtnModal {
+  margin-top: 10px;
+}
+
+/* Estilo para limitar el número de dígitos en el campo de teléfono */
+@keyframes autofill {
+  to {
+    color: inherit;
+    background: inherit;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  animation-name: autofill;
+  animation-fill-mode: both;
+}

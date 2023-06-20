@@ -16,14 +16,16 @@
         />
         <link
             rel="stylesheet"
-            href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"/>
-        <link rel="stylesheet" href="Vista\Modules\Configuracion\ConfiguracionOtros\Clientes\Componentes\Page\ListadoDatosClientes\MostrarClientes.css"/>
-        <title>Clientes</title>
+            href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+        />
+        <link rel="stylesheet" 
+              href="Vista\Modules\Configuracion\ConfiguracionOtros\Clientes\Componentes\Page\ListadoDatosClientes\MostrarClientes.css"
+        />
     </head>
     <body>
-         <header>
-      <h2>Configuración / Clientes</h2>
-    </header>
+        <header>
+            <h2>Configuración / Clientes</h2>
+        </header>
     <article class="encabezado-principal">
       <div class="grupo-principal">
         <div class="icono-encabezado">
@@ -43,7 +45,7 @@
         <button><i class="uil uil-download-alt"></i>Descargar PDF</button>
       </div>
       <div class="grupo-buscar">
-        <input type="search" placeholder="Ingresar valor a buscar" value="" />
+        <input type="search" placeholder="Ingresar la Razón Social a Buscar" value="" />
         <button><i class="uil uil-search"></i>Buscar</button>
       </div>
     </article>

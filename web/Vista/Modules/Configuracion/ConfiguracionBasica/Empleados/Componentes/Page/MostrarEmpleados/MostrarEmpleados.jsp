@@ -21,15 +21,15 @@
         <title>Empleados</title>
     </head>
     <body>
-         <header>
-      <h2>Configuración / Empleados</h2>
-    </header>
+        <header>
+            <h2>Configuración / Empleados</h2>
+        </header>
     <article class="encabezado-principal">
       <div class="grupo-principal">
         <div class="icono-encabezado">
           <i class="uil uil-constructor"></i>
         </div>
-        <p>Clientes</p>
+        <p>Empleados</p>
       </div>
       <div class="grupo-boton-nuevo">
         <button><i class="uil uil-plus"></i>Nuevo</button>
