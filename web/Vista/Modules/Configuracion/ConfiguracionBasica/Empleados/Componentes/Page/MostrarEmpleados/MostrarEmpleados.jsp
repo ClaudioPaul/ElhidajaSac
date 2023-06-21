@@ -24,13 +24,11 @@
         <br>
         <br>
         <br>
-        <header>
-            <h2>Configuración / Empleados</h2>
-        </header>
+        
     <article class="encabezado-principal">
       <div class="grupo-principal">
         <div class="icono-encabezado">
-          <i class="uil uil-constructor"></i>
+          <i class="uil uil-users-alt"></i>
         </div>
         <p>Empleados</p>
       </div>

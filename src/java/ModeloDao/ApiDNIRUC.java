@@ -72,7 +72,7 @@ public class ApiDNIRUC {
             
                 int respodeCode = conn.getResponseCode();
                 if(respodeCode != 200){
-
+                   apiruc = null;
                 }else{
                     StringBuilder informationString = new StringBuilder();
                     try (Scanner scanner = new Scanner(url.openStream())) {
@@ -89,6 +89,7 @@ public class ApiDNIRUC {
                     apiruc.setRuc((String)datos.get("ruc"));
                     apiruc.setRasonsocial((String) datos.get("razonSocial"));
                     apiruc.setDireccion((String) datos.get("direccion"));
+                    
                 }
             } catch (IOException | ParseException es) {
                 es.getMessage();

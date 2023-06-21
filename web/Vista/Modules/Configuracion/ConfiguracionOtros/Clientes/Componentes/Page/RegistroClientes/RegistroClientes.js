@@ -4,3 +4,9 @@
  */
 
 
+function validarLongitud(input) {
+        var maxLength = parseInt(input.getAttribute("maxlength"));
+        if (input.value.length > maxLength) {
+            input.value = input.value.slice(0, maxLength);
+        }
+}

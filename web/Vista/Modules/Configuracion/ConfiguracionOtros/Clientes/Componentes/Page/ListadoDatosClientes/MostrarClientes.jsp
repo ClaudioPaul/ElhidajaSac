@@ -26,13 +26,10 @@
         <br>
         <br>
         <br>
-        <header>
-            <h2>Configuración / Empresas</h2>
-        </header>
     <article class="encabezado-principal">
       <div class="grupo-principal">
         <div class="icono-encabezado">
-          <i class="uil uil-constructor"></i>
+          <i class="uil uil-building"></i>
         </div>
         <p>Empresas</p>
       </div>
@@ -87,7 +84,7 @@
                   </button>
                 </td>
                 <td>
-                  <button onclick="window.location.href='ControladorEmpresas?menu=Empresas&accion=Eliminar&id=${empresa.getId()}'"
+                  <button onclick="confirmarEliminacion(${empresa.getId()})"
                           class="btn-option-table btn-eliminar">
                     <i class="uil uil-trash"></i>
                   </button>
@@ -98,5 +95,29 @@
         </table>
       </div>
     </article>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/ListadoDatosClientes/MostrarClientes.js" 
+                type="text/javascript">
+        </script>
+        <%-- Verificar si existe el mensaje --%>
+        <% if (request.getAttribute("mensaje") != null) { %>
+          <%-- Obtener el mensaje de la solicitud --%>
+          <% String mensaje = (String) request.getAttribute("mensaje"); %>
+
+          <%-- Mostrar el mensaje utilizando SweetAlert --%>
+          <script>
+            Swal.fire({
+              icon: 'warning',
+              title: 'Mensaje',
+              text: '<%= mensaje %>',
+              confirmButtonText: 'Aceptar'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                // Redirigir a la URL después de hacer clic en "Aceptar"
+                window.location.href = 'ControladorEmpresas?menu=Empresas&accion=Listar';
+              }
+            });
+          </script>
+        <% } %>
     </body>
 </html>

@@ -57,7 +57,11 @@ public class ControladorEmpresas extends HttpServlet {
                     case "Buscar":
                         BuscarEmpresas =request.getParameter("txtBuscar");
                         List listas = empresasDao.Buscar(BuscarEmpresas);
-                        request.setAttribute("listaEmpresas", listas);
+                        if(listas.isEmpty()){
+                            request.setAttribute("mensaje", "No se encontraron datos");
+                        }else{
+                            request.setAttribute("listaEmpresas", listas);
+                        }
                     break;
                     case "Cancelar":
                         request.getRequestDispatcher("ControladorEmpresas?menu=Empresas&accion=Listar").forward(request, response);

@@ -13,6 +13,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         /* Establece cualquier otro estilo que desees para el modal */
     }
     
+    .custom-confirm-button {
+        background-color: #3D3C3B !important;
+        color: #FFF !important;
+        box-shadow: none !important;
+    }
+
+    .custom-confirm-button:hover {
+        background-color: #4D4B4A !important;
+        box-shadow: none !important;
+    }
+    
     h2{
         font-weight: bold;
     }
@@ -23,7 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         /* Establece cualquier otro estilo que desees para el contenedor del formulario de búsqueda */
     }
     
-    .ConsultarRuc input[type="text"] {
+    .ConsultarRuc input[type="number"] {
         width: 65%;
         padding: 5px;
         font-size: 14px;

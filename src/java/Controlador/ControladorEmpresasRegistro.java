@@ -56,9 +56,14 @@ public class ControladorEmpresasRegistro extends HttpServlet {
                         request.setAttribute("listaEmpresas", lista);
                     break;
                     case "Buscar":
-                        BuscarRUC = request.getParameter("txtBuscarRuc");
-                        ApiReniecSunat api = apiD.ConsultarRUC(BuscarRUC);
+                    BuscarRUC = request.getParameter("txtBuscarRuc");
+                    ApiReniecSunat api = apiD.ConsultarRUC(BuscarRUC);
+
+                    if (api != null) {
                         request.setAttribute("Api", api);
+                    } else {
+                        request.setAttribute("MensajeErrorBuscar", "No se encontró ");
+                    }
                     break;
                     case "Agregar":
                         String Ruc  = request.getParameter("txtRuc");
@@ -75,8 +80,12 @@ public class ControladorEmpresasRegistro extends HttpServlet {
                         empresas.setApellidoRepresentante(ApellidoRepresentante);
                         empresas.setTelefono(Telefono);
                         empresas.setCorreo(Correo);
-                        empresasDao.Registrar(empresas);
-                        request.getRequestDispatcher("ControladorEmpresas?menu=Empresas&accion=Listar").forward(request, response);
+                        boolean registro = empresasDao.Registrar(empresas);
+                        if(registro){
+                            request.setAttribute("MensajeConfirmacion", "Regitrado");
+                        }else{
+                            request.setAttribute("MensajeError", "Error en Registro");
+                        }
                     break;
                 }
                 request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/RegistroClientes/RegistroClientes.jsp").forward(request, response);
