@@ -25,4 +25,3 @@ function confirmarEliminacion(id) {
       }
     });
   }
-  

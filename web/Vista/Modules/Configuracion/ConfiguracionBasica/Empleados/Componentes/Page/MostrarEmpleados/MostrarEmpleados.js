@@ -4,3 +4,22 @@
  */
 
 
+function confirmarEliminacion(id) {
+    Swal.fire({
+      title: '¿Estás seguro de que deseas eliminar esta empresa?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = `ControladorEmpleado?menu=Empleado&accion=Eliminar&id=${id}`;
+        Swal.fire({
+          title: 'Empresa Eliminada',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    });
+  }

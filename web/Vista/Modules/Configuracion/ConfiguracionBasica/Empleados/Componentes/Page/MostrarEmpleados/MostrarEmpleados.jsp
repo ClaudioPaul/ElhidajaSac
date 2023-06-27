@@ -87,10 +87,10 @@
                   </button>
                 </td>
                 <td>
-                  <button onclick="window.location.href='ControladorEmpleadoEditar?menu=EmpleadoEditar&accion=Eliminar&id=${empresa.getId()}'"
+                    <button onclick="confirmarEliminacion(${empresa.getId()})"
                           class="btn-option-table btn-eliminar">
-                    <i class="uil uil-trash"></i>
-                  </button>
+                        <i class="uil uil-trash"></i>
+                    </button>
                 </td>
             </tr>
             </c:forEach>
@@ -98,5 +98,9 @@
         </table>
       </div>
     </article>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="Vista\Modules\Configuracion\ConfiguracionBasica\Empleados\Componentes\Page\MostrarEmpleados\MostrarEmpleados.js" 
+                type="text/javascript">
+        </script>
     </body>
 </html>

@@ -70,4 +70,20 @@
         <servlet-name>ControladorEmpleadoEditar</servlet-name>
         <url-pattern>/ControladorEmpleadoEditar</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorAuto</servlet-name>
+        <servlet-class>Controlador.ControladorAuto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorAuto</servlet-name>
+        <url-pattern>/ControladorAuto</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorRegistroActividades</servlet-name>
+        <servlet-class>Controlador.RegistroActividades</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorRegistroActividades</servlet-name>
+        <url-pattern>/ControladorRegistroActividades</url-pattern>
+    </servlet-mapping>
 </web-app>

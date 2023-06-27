@@ -103,7 +103,12 @@ public class EmpresasDao {
             cs.setString(4, empresas.getTelefono());
             cs.setString(5, empresas.getCorreo());
             cs.setInt(6, empresas.getId());
-            cs.executeUpdate();
+            
+            int numFAfectadas = cs.executeUpdate();
+
+            if(numFAfectadas>0){
+                return true;
+            }
         } catch (Exception e) {
         }
         return false;

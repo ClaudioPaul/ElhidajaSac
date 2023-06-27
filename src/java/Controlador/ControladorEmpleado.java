@@ -36,7 +36,7 @@ public class ControladorEmpleado extends HttpServlet {
     Empleados empleado = new Empleados();
     EmpleadosDao empleadoDao = new EmpleadosDao();
             
-    int id;
+    int idEmpleado;
     String BuscarDNI;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -58,6 +58,9 @@ public class ControladorEmpleado extends HttpServlet {
                         request.setAttribute("listaEmpelados", listaEmpelado);
                     break;
                     case "Eliminar":
+                        idEmpleado = Integer.parseInt(request.getParameter("id"));
+                        empleadoDao.Eliminar(idEmpleado);
+                        request.getRequestDispatcher("ControladorEmpleado?menu=Empleado&accion=Listar").forward(request, response);
                     break;
                     case "Cancelar":
                     break;

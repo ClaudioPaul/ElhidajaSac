@@ -62,7 +62,7 @@
                 </a>
               </li>
               <li class="item">
-                <a href="ControladorLogin?menu=Autos&accion=Listar" target="myFrame">
+                <a href="ControladorAuto?menu=Auto&accion=Listar" target="myFrame">
                       <img src="Iconos/truck-minus.png" alt=""/>
                       Autos
                 </a>
@@ -82,7 +82,7 @@
             </a>
           </li>
           <li class="item">
-            <a href="ControladorLogin?menu=Actividades&accion=Listar" target="myFrame">
+            <a href="ControladorRegistroActividades?menu=Actividades&accion=Listar" target="myFrame">
                 <img src="Iconos/round-shopping-basket.png" alt=""/>
                 Actividades
             </a>

@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : Clientes
     Created on : 18 jun. 2023, 23:12:31
     Author     : CLAUDIO CRUZADO
@@ -18,8 +18,8 @@
             rel="stylesheet"
             href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
         />
-        <link rel="stylesheet" 
-              href="Vista\Modules\Configuracion\ConfiguracionOtros\Clientes\Componentes\Page\ListadoDatosClientes\MostrarClientes.css"
+       <link rel="stylesheet" 
+            href="Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/ListadoDatosClientes/MostrarClientes.css" 
         />
     </head>
     <body>
@@ -42,7 +42,9 @@
     </article>
     <article class="opciones-listado">
       <div class="grupo-btn-opciones">
-        <button><i class="uil uil-download-alt"></i>Descargar PDF</button>
+        <button id="btnDescargarPDF" onclick="descargarPDF()">
+            <i class="uil uil-download-alt"></i>Descargar PDF
+        </button>
       </div>
       <form action="ControladorEmpresas?menu=Empresas" method="POST">  
         <div class="grupo-buscar">
@@ -119,5 +121,31 @@
             });
           </script>
         <% } %>
+        
+        <script>
+            function descargarPDF() {
+                // Enviar una solicitud al servidor para generar el PDF
+                fetch('Vista\Modules\Configuracion\ConfiguracionOtros\Clientes\Componentes\Page\ListadoDatosClientes\generarPDF.jsp', {
+                    method: 'GET'
+                })
+                .then(response => response.blob())
+                .then(blob => {
+                    // Crear un objeto URL para el blob del PDF
+                    const url = URL.createObjectURL(blob);
+
+                    // Crear un elemento de enlace para iniciar la descarga del PDF
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'lista_clientes.pdf'; // Nombre del archivo PDF
+                    link.click();
+
+                    // Liberar el objeto URL
+                    URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    console.error('Error al generar el PDF:', error);
+                });
+            }
+        </script>
     </body>
 </html>

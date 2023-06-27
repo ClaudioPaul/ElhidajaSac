@@ -62,8 +62,12 @@ public class ControladorEmpleadoRegistro extends HttpServlet {
                     case "Buscar":
                         BuscarDNI = request.getParameter("txtBuscarDNI");
                         ApiReniecSunat api = apiD.ConsultarDNI(BuscarDNI);
+                        if (api != null) {
                         request.setAttribute("Api", api);
-                        request.getRequestDispatcher("ControladorEmpleadoRegistro?menu=EmpleadoRegistro&accion=Formulario").forward(request, response);
+                        } else {
+                        request.setAttribute("MensajeErrorBuscar", "No se encontró Resutados");
+                        }
+                         request.getRequestDispatcher("ControladorEmpleadoRegistro?menu=EmpleadoRegistro&accion=Formulario").forward(request, response);
                     break;
                     case "Agregar":
                         String Nombres  = request.getParameter("txtNombres");
@@ -88,8 +92,13 @@ public class ControladorEmpleadoRegistro extends HttpServlet {
                         empleado.setDireccion(Direccion);
                         empleado.setTipoLicencia(tipoLicencia);
                         empleado.setNumeroLicencia(numeroLicencia);
-                        empleadoDao.Registrar(empleado);
-                        request.getRequestDispatcher("ControladorEmpleado?menu=Empleado&accion=Listar").forward(request, response);
+                        empleado.setId(id);
+                        boolean editar = empleadoDao.Editar(empleado);
+                        if(editar){
+                            request.setAttribute("MensajeConfirmacion", "Registro Actualizado");
+                        }else{
+                            request.setAttribute("MensajeError", "Error en Registro");
+                        }
                     break;
                 }
                 request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionBasica/Empleados/Componentes/Page/RegistrarEmpleados/RegistroEmpleados.jsp").forward(request, response);

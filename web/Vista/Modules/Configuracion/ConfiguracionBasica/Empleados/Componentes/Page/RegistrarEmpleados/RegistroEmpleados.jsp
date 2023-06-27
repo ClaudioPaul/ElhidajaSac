@@ -32,7 +32,7 @@
             <center><h2>REGISTRAR EMPLEADOS</h2></center>
         <div class="modal-content">
             <form class="ConsultarRuc" action="ControladorEmpleadoRegistro?menu=EmpleadoRegistro" method="POST">
-                <input type="text" name="txtBuscarDNI" placeholder="Ingresar DNI">
+                <input type="number" name="txtBuscarDNI" placeholder="Ingresar DNI" maxlength="8" oninput="validarLongitud(this)">
                 <input type="submit" name="accion" value="Buscar" id="buscarBtnModal">
             </form>
     <div class="ContenerdorFormularioRegistro">
@@ -97,5 +97,61 @@
     </div>
     </div>
     </center>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Vista\Modules\Configuracion\ConfiguracionBasica\Empleados\Componentes\Page\RegistrarEmpleados\RegistroEmpleados.js" 
+                type="text/javascript">
+    </script>
+    <%-- Verificar si existe el atributo "mensaje" --%>
+            <% if (request.getAttribute("MensajeErrorBuscar") != null) { %>
+              <%-- Obtener el mensaje de la solicitud --%>
+              <% String mensaje = (String) request.getAttribute("MensajeErrorBuscar"); %>
+
+              <%-- Mostrar el mensaje utilizando SweetAlert --%>
+              <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: '<%= mensaje %>',
+                    confirmButtonText: 'Aceptar',
+                    customClass: {
+                        confirmButton: 'custom-confirm-button'
+                    }
+                });
+              </script>
+            <% } %>
+            
+            <%-- Verificar si existe el atributo "MensajeConfirmacion" --%>
+            <% if (request.getAttribute("MensajeConfirmacion") != null) { %>
+              <%-- Obtener el mensaje de confirmación de la solicitud --%>
+              <% String mensajeConfirmacion = (String) request.getAttribute("MensajeConfirmacion"); %>
+
+            <%-- Mostrar el mensaje de confirmación utilizando SweetAlert --%>
+            <script>
+              Swal.fire({
+                icon: 'success',
+                title: 'Confirmación',
+                text: '<%= mensajeConfirmacion %>',
+                confirmButtonText: 'Aceptar'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // Redirigir a la URL después de hacer clic en "Aceptar"
+                  window.location.href = 'ControladorEmpleado?menu=Empleado&accion=Listar';
+                }
+              });
+            </script>
+            <% } else if (request.getAttribute("MensajeError") != null) { %>
+            <%-- Obtener el mensaje de error de la solicitud --%>
+            <% String mensajeError = (String) request.getAttribute("MensajeError"); %>
+
+            <%-- Mostrar el mensaje de error utilizando SweetAlert --%>
+            <script>
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '<%= mensajeError %>',
+                confirmButtonText: 'Aceptar'
+              });
+            </script>
+          <% } %>
     </body>
 </html>

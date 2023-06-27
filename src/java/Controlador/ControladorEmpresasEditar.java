@@ -51,23 +51,23 @@ public class ControladorEmpresasEditar extends HttpServlet {
                         request.setAttribute("listaEmpresa", empresa);
                     break;
                     case "Actualizar":
-                        String Rucs  = request.getParameter("txtRuc");
-                        String RasonSocials  = request.getParameter("txtRazonsocial");
                         String Direccions  = request.getParameter("txtDireccion");
                         String NombreRepresentantes  = request.getParameter("txtNombre");
                         String ApellidoRepresentantes  = request.getParameter("txtApellidos");
                         String Telefonos  = request.getParameter("txtTelefono");
                         String Correos  = request.getParameter("txtCorreo");
-                        empresas.setRuc(Rucs);
-                        empresas.setRazonSocial(RasonSocials);
                         empresas.setDireccion(Direccions);
                         empresas.setNombreRepresentante(NombreRepresentantes);
                         empresas.setApellidoRepresentante(ApellidoRepresentantes);
                         empresas.setTelefono(Telefonos);
                         empresas.setCorreo(Correos);
                         empresas.setId(idEmpresa);
-                        empresasDao.Editar(empresas);
-                        request.getRequestDispatcher("ControladorEmpresas?menu=Empresas&accion=Listar").forward(request, response);
+                        boolean editar = empresasDao.Editar(empresas);
+                        if(editar){
+                            request.setAttribute("MensajeConfirmacion", "Registro Actualizado");
+                        }else{
+                            request.setAttribute("MensajeError", "Error en Actualizar");
+                        }
                     break;
                 }
                 request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/EditarClientes/EditarClientes.jsp").forward(request, response);

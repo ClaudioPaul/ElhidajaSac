@@ -95,5 +95,44 @@
     </div>
     </center>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <%-- Verificar si existe el atributo "MensajeConfirmacion" --%>
+            <% if (request.getAttribute("MensajeConfirmacion") != null) { %>
+              <%-- Obtener el mensaje de confirmación de la solicitud --%>
+              <% String mensajeConfirmacion = (String) request.getAttribute("MensajeConfirmacion"); %>
+
+            <%-- Mostrar el mensaje de confirmación utilizando SweetAlert --%>
+            <script>
+              Swal.fire({
+                icon: 'success',
+                title: 'Confirmación',
+                text: '<%= mensajeConfirmacion %>',
+                confirmButtonText: 'Aceptar'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // Redirigir a la URL después de hacer clic en "Aceptar"
+                  window.location.href = 'ControladorEmpleado?menu=Empleado&accion=Listar';
+                }
+              });
+            </script>
+            <% } else if (request.getAttribute("MensajeError") != null) { %>
+            <%-- Obtener el mensaje de error de la solicitud --%>
+            <% String mensajeError = (String) request.getAttribute("MensajeError"); %>
+
+            <%-- Mostrar el mensaje de error utilizando SweetAlert --%>
+            <script>
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '<%= mensajeError %>',
+                confirmButtonText: 'Aceptar'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // Redirigir a la URL después de hacer clic en "Aceptar"
+                  window.location.href = 'ControladorEmpleado?menu=Empleado&accion=Listar';
+                }
+              });;
+            </script>
+          <% } %>
 </html>
 

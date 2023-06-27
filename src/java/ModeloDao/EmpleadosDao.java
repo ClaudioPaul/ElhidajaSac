@@ -100,4 +100,42 @@ public class EmpleadosDao {
         }
         return empleados;
     }
+    
+    public boolean Eliminar(int IdEmpleado) {
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call EliminarEmpleados(?)}");
+            cs.setInt(1, IdEmpleado);
+            cs.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
+    }
+    
+    public boolean Editar(Empleados empleados) {
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call EditarEmpleados(?,?,?,?,?,?,?,?,?,?,?)}");
+            cs.setString(1, empleados.getNombres());
+            cs.setString(2, empleados.getApellidos());
+            cs.setInt(3, empleados.getIdTipoEmpleado());
+            cs.setInt(4, empleados.getIdEmpresaTerciaria());
+            cs.setString(5, empleados.getTipoDocumento());
+            cs.setString(6, empleados.getNumeroDocumento());
+            cs.setString(7, empleados.getTelefono());
+            cs.setString(8, empleados.getCorreo());
+            cs.setString(9, empleados.getDireccion());
+            cs.setString(10, empleados.getTipoLicencia());
+            cs.setString(11, empleados.getNumeroLicencia());
+            cs.setInt(12, empleados.getId());
+            
+            int numFAfectadas = cs.executeUpdate();
+
+            if(numFAfectadas>0){
+                return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
 }

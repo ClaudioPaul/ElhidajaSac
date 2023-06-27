@@ -48,10 +48,14 @@ public class ApiDNIRUC {
 
                     JSONObject datos = (JSONObject) obj;
 
-                    apidni = new ApiReniecSunat();
-                    apidni.setDni((String)datos.get("dni"));
-                    apidni.setNombres((String) datos.get("nombres"));
-                    apidni.setApellidos((String) datos.get("apellidoPaterno") + " "+ datos.get("apellidoMaterno"));
+                    String dni = (String)datos.get("dni");
+                    if(dni != null){
+                        apidni = new ApiReniecSunat();
+                        apidni.setDni((String)datos.get("dni"));
+                        apidni.setNombres((String) datos.get("nombres"));
+                        apidni.setApellidos((String) datos.get("apellidoPaterno") + " "+ datos.get("apellidoMaterno"));
+                    }
+                    
                 }
             } catch (IOException | ParseException es) {
                 es.getMessage();
@@ -84,11 +88,14 @@ public class ApiDNIRUC {
                     Object obj = parse.parse(String.valueOf(informationString));
 
                     JSONObject datos = (JSONObject) obj;
-
-                    apiruc = new ApiReniecSunat();
-                    apiruc.setRuc((String)datos.get("ruc"));
-                    apiruc.setRasonsocial((String) datos.get("razonSocial"));
-                    apiruc.setDireccion((String) datos.get("direccion"));
+                    
+                    String ruc = (String)datos.get("ruc");
+                    if(ruc != null){
+                        apiruc = new ApiReniecSunat();
+                        apiruc.setRuc((String)datos.get("ruc"));
+                        apiruc.setRasonsocial((String) datos.get("razonSocial"));
+                        apiruc.setDireccion((String) datos.get("direccion"));
+                    }
                     
                 }
             } catch (IOException | ParseException es) {

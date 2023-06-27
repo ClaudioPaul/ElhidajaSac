@@ -62,7 +62,7 @@ public class ControladorEmpresasRegistro extends HttpServlet {
                     if (api != null) {
                         request.setAttribute("Api", api);
                     } else {
-                        request.setAttribute("MensajeErrorBuscar", "No se encontró ");
+                        request.setAttribute("MensajeErrorBuscar", "No se encontró Resutados");
                     }
                     break;
                     case "Agregar":
