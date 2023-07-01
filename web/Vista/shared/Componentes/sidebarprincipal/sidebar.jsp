@@ -56,7 +56,7 @@
                 </a>
               </li>
               <li class="item">
-                <a href="ControladorLogin?menu=Usuarios&accion=Listar" target="myFrame">
+                <a href="ControladorUsuario?menu=Usuarios&accion=Listar" target="myFrame">
                     <img src="Iconos/user-circle.png" alt=""/>
                     Usuarios
                 </a>

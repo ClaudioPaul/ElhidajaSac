@@ -24,7 +24,7 @@
             <div class="modal-content">
                 <div class="FormularioBuscar">
                     <form class="ConsultarRuc" action="ControladorEmpresasRegistro?menu=EmpresasRegistro" method="POST">
-                        <input type="number" name="txtBuscarRuc" placeholder="Ingresar RUC" maxlength="11" oninput="validarLongitud(this)">
+                        <input type="number" name="txtBuscarRuc" placeholder="Ingresar RUC" maxlength="11" oninput="validarLongitud(this)" required>
                         <input type="submit" name="accion" value="Buscar" id="buscarBtnModal">
                     </form>
                 </div>

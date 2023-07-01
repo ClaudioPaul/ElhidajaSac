@@ -32,7 +32,7 @@
             <center><h2>REGISTRAR EMPLEADOS</h2></center>
         <div class="modal-content">
             <form class="ConsultarRuc" action="ControladorEmpleadoRegistro?menu=EmpleadoRegistro" method="POST">
-                <input type="number" name="txtBuscarDNI" placeholder="Ingresar DNI" maxlength="8" oninput="validarLongitud(this)">
+                <input type="number" name="txtBuscarDNI" placeholder="Ingresar DNI" maxlength="8" oninput="validarLongitud(this)" required>
                 <input type="submit" name="accion" value="Buscar" id="buscarBtnModal">
             </form>
     <div class="ContenerdorFormularioRegistro">

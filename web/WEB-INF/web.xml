@@ -71,6 +71,14 @@
         <url-pattern>/ControladorEmpleadoEditar</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>ControladorUsuario</servlet-name>
+        <servlet-class>Controlador.ControladorUsuario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorUsuario</servlet-name>
+        <url-pattern>/ControladorUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ControladorAuto</servlet-name>
         <servlet-class>Controlador.ControladorAuto</servlet-class>
     </servlet>
