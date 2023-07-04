@@ -30,7 +30,7 @@
         <br>
         <center>
         <div id="myModal" class="modal">
-            <center><h2>REGISTRAR EMPLEADOS</h2></center>
+            <center><h2>EDITAR EMPLEADOS</h2></center>
         <div class="modal-content">
     <div class="ContenerdorFormularioRegistro">
         <form class="FormularioRegistro" action="ControladorEmpleadoEditar?menu=EmpleadoEditar" method="POST">                        

@@ -142,7 +142,22 @@
         <servlet-name>ControladorMaterialesEditar</servlet-name>
         <url-pattern>/ControladorMaterialesEditar</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <servlet-name>ControladorCompras</servlet-name>
+        <servlet-class>Controlador.ControladorCompras</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorCompras</servlet-name>
+        <url-pattern>/ControladorCompras</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorCompraRegistro</servlet-name>
+        <servlet-class>Controlador.ControladorCompraRegistro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorCompraRegistro</servlet-name>
+        <url-pattern>/ControladorCompraRegistro</url-pattern>
+    </servlet-mapping>
     
     
     <servlet>

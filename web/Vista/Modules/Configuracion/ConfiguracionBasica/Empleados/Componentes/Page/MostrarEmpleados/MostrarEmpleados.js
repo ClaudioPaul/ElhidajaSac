@@ -6,7 +6,7 @@
 
 function confirmarEliminacion(id) {
     Swal.fire({
-      title: '¿Estás seguro de que deseas eliminar esta empresa?',
+      title: '¿Estás seguro de que deseas eliminar este Empleado?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sí, eliminar',

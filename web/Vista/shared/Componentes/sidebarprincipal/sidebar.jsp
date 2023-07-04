@@ -76,7 +76,7 @@
             </ul>
           </li>
           <li class="item">
-            <a href="#" target="myFrame">
+            <a href="ControladorCompras?menu=Compras&accion=Listar" target="myFrame">
                 <img src="Iconos/store-edit.png" alt=""/>
                 Compras
             </a>
