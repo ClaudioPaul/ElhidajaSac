@@ -6,15 +6,13 @@
 package Controlador;
 
 import Modelo.ApiReniecSunat;
-import Modelo.Empleados;
 import Modelo.Empresas;
+import Modelo.Materiales;
 import Modelo.TipoEmpleado;
 import ModeloDao.ApiDNIRUC;
-import ModeloDao.AutosDao;
-import ModeloDao.EmpleadosDao;
 import ModeloDao.EmpresasDao;
+import ModeloDao.MaterialesDao;
 import ModeloDao.TipoEmpleadoDao;
-import ModeloDao.UsuariosDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,11 +25,13 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorUsuario extends HttpServlet {
+public class ControladorMaterialesRegistro extends HttpServlet {
 
-    UsuariosDao usuarioDao = new UsuariosDao();
     
-    int idUsuarios;
+    Materiales materiales = new Materiales();
+    MaterialesDao materialesDao = new MaterialesDao();
+            
+    int id;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,17 +45,27 @@ public class ControladorUsuario extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("Usuarios")){
+            if(menu.equals("MaterialesRegistro")){
                 switch(accion){
-                    case "Listar":
-                       List listaUsuarios = usuarioDao.listar();
-                       request.setAttribute("listaUsuarios", listaUsuarios);
+                    case "Formilario":
+                       
                     break;
-                    case "Cancelar":
-                        request.getRequestDispatcher("ControladorUsuario?menu=Usuarios&accion=Listar").forward(request, response);
+                    case "Agregar":
+                        String Nombre  = request.getParameter("txtNombre");
+                        String Descripcion  = request.getParameter("txtDescripcion");
+                        String Precio  = request.getParameter("txtPrecio");
+                        materiales.setNombre(Nombre);
+                        materiales.setDescripcion(Descripcion);
+                        materiales.setPrecio(Double.valueOf(Precio));
+                        boolean registro = materialesDao.Registrar(materiales);
+                        if(registro){
+                            request.setAttribute("MensajeConfirmacion", "Regitrado");
+                        }else{
+                            request.setAttribute("MensajeError", "Error en Registro");
+                        }
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionBasica/Usuarios/Componentes/Page/MostrarUsuarios/MostrarUsuarios.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionArticulos/Materiales/Componentes/Page/RegistrarMateriales/RegistroMateriales.jsp").forward(request, response);
             }
     }
 

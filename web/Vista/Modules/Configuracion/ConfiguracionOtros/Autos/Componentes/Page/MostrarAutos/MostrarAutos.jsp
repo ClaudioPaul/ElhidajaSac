@@ -18,7 +18,7 @@
         <link
             rel="stylesheet"
             href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"/>
-        <link rel="stylesheet" href="Vista/Modules/Configuracion/ConfiguracionBasica/Empleados/Componentes/Page/MostrarEmpleados/MostrarEmpleados.css"/>
+        <link rel="stylesheet" href="Vista/Modules/Configuracion/ConfiguracionOtros/Autos/Componentes/Page/MostrarAutos/MostrarAutos.css"/>
         <title>Autos</title>
     </head>
     <body>
@@ -33,7 +33,7 @@
         </div>
         <p>Autos</p>
       </div>
-      <form action="ControladorEmpleadoRegistro?menu=EmpleadoRegistro" method="POST">
+      <form action="ControladorAutoRegistro?menu=AutoRegistro" method="POST">
       <div class="grupo-boton-nuevo">
         <button type="submit" name="accion" value="Formulario">
             <i class="uil uil-plus"></i>
@@ -78,13 +78,13 @@
                 <td>${empresa.getGeneracion()}</td>
                 <td>${empresa.getEmpresa()}</td>
                 <td>
-                  <button onclick="window.location.href=''"
+                  <button onclick="window.location.href='ControladorAutoEditar?menu=AutoEditar&accion=Editar&id=${empresa.getId()}'"
                           class="btn-option-table btn-editar">
                     <i class="uil uil-pen"></i>
                   </button>
                 </td>
                 <td>
-                    <button onclick=""
+                    <button onclick="confirmarEliminacion(${empresa.getId()})"
                           class="btn-option-table btn-eliminar">
                         <i class="uil uil-trash"></i>
                     </button>
@@ -96,7 +96,7 @@
       </div>
     </article>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="Vista\Modules\Configuracion\ConfiguracionBasica\Empleados\Componentes\Page\MostrarEmpleados\MostrarEmpleados.js" 
+        <script src="Vista/Modules/Configuracion/ConfiguracionOtros/Autos/Componentes/Page/MostrarAutos/MostrarAutos.js" 
                 type="text/javascript">
         </script>
     </body>

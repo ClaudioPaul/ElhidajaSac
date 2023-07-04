@@ -17,6 +17,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     box-sizing: border-box;
 }
 
+.swal2-confirm {
+  background-color: #3D3C3B !important;
+  color: #FFF !important;
+  box-shadow: none !important;
+}
+
+.swal2-confirm:hover {
+  background-color: #4D4B4A !important;
+  color: #FFF !important;
+  box-shadow: none !important;
+}
+
 header {
     background-color: #3D3C3B;
     width: 100%;

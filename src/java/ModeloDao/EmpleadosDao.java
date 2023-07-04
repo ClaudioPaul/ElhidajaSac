@@ -138,4 +138,31 @@ public class EmpleadosDao {
         }
         return false;
     }
+    
+    public List<Empleados> Buscar(String Nombre) {
+         ArrayList<Empleados> listaEmpleados =new ArrayList();
+        Empleados empleados;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call BuscarEmpleados(?)}");
+            cs.setString(1, Nombre);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                empleados = new Empleados();
+                empleados.setId(rs.getInt(1));
+                empleados.setNombres(rs.getString(2));
+                empleados.setApellidos(rs.getString(3));
+                empleados.setTipoEmpleado(rs.getString(4));
+                empleados.setEmpresaTercearia(rs.getString(5));
+                empleados.setNumeroDocumento(rs.getString(6));
+                empleados.setTelefono(rs.getString(7));
+                empleados.setCorreo(rs.getString(8));
+                listaEmpleados.add(empleados);
+            }
+            
+        } catch (Exception e) {
+            
+        }
+        return listaEmpleados;
+    }
 }

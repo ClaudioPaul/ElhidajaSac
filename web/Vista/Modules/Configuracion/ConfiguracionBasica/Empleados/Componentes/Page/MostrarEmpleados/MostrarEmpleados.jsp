@@ -45,9 +45,9 @@
       <div class="grupo-btn-opciones">
         <button><i class="uil uil-download-alt"></i>Descargar PDF</button>
       </div>
-      <form action="ControladorEmpresas?menu=Empresas" method="POST">
+      <form action="ControladorEmpleado?menu=Empleado" method="POST">
         <div class="grupo-buscar">
-          <input type="search" placeholder="Ingresar valor a buscar" value="" />
+          <input type="search" placeholder="Ingresar valor a buscar" value="" name="txtBuscar"/>
           <button type="submit" name="accion" value="Buscar"><i class="uil uil-search"></i>Buscar</button>
           <button type="submit" name="accion" value="Cancelar"><i class="uil uil-times-circle"></i></button>
         </div>
@@ -102,5 +102,26 @@
         <script src="Vista\Modules\Configuracion\ConfiguracionBasica\Empleados\Componentes\Page\MostrarEmpleados\MostrarEmpleados.js" 
                 type="text/javascript">
         </script>
+        
+        <%-- Verificar si existe el mensaje --%>
+        <% if (request.getAttribute("mensaje") != null) { %>
+          <%-- Obtener el mensaje de la solicitud --%>
+          <% String mensaje = (String) request.getAttribute("mensaje"); %>
+
+          <%-- Mostrar el mensaje utilizando SweetAlert --%>
+          <script>
+            Swal.fire({
+              icon: 'warning',
+              title: 'Mensaje',
+              text: '<%= mensaje %>',
+              confirmButtonText: 'Aceptar'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                // Redirigir a la URL después de hacer clic en "Aceptar"
+                window.location.href = 'ControladorEmpleado?menu=Empleado&accion=Listar';
+              }
+            });
+          </script>
+        <% } %>
     </body>
 </html>

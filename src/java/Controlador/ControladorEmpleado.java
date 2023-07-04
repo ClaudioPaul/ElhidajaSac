@@ -37,7 +37,7 @@ public class ControladorEmpleado extends HttpServlet {
     EmpleadosDao empleadoDao = new EmpleadosDao();
             
     int idEmpleado;
-    String BuscarDNI;
+    String BuscarEmpleado;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -63,6 +63,16 @@ public class ControladorEmpleado extends HttpServlet {
                         request.getRequestDispatcher("ControladorEmpleado?menu=Empleado&accion=Listar").forward(request, response);
                     break;
                     case "Cancelar":
+                        request.getRequestDispatcher("ControladorEmpleado?menu=Empleado&accion=Listar").forward(request, response);
+                    break;
+                    case "Buscar":
+                        BuscarEmpleado =request.getParameter("txtBuscar");
+                        List listas = empleadoDao.Buscar(BuscarEmpleado);
+                        if(listas.isEmpty()){
+                            request.setAttribute("mensaje", "No se encontraron datos");
+                        }else{
+                            request.setAttribute("listaEmpelados", listas);
+                        }
                     break;
                 }
                 request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionBasica/Empleados/Componentes/Page/MostrarEmpleados/MostrarEmpleados.jsp").forward(request, response);

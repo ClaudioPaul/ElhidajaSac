@@ -79,6 +79,22 @@
         <url-pattern>/ControladorUsuario</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>ControladorUsuarioRegistro</servlet-name>
+        <servlet-class>Controlador.ControladorUsuarioRegistro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorUsuarioRegistro</servlet-name>
+        <url-pattern>/ControladorUsuarioRegistro</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorUsuarioEditar</servlet-name>
+        <servlet-class>Controlador.ControladorUsuarioEditar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorUsuarioEditar</servlet-name>
+        <url-pattern>/ControladorUsuarioEditar</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ControladorAuto</servlet-name>
         <servlet-class>Controlador.ControladorAuto</servlet-class>
     </servlet>
@@ -86,6 +102,49 @@
         <servlet-name>ControladorAuto</servlet-name>
         <url-pattern>/ControladorAuto</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorAutoRegistro</servlet-name>
+        <servlet-class>Controlador.ControladorAutoRegistro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorAutoRegistro</servlet-name>
+        <url-pattern>/ControladorAutoRegistro</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorAutoEditar</servlet-name>
+        <servlet-class>Controlador.ControladorAutoEditar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorAutoEditar</servlet-name>
+        <url-pattern>/ControladorAutoEditar</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorMateriales</servlet-name>
+        <servlet-class>Controlador.ControladorMateriales</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorMateriales</servlet-name>
+        <url-pattern>/ControladorMateriales</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorMaterialesRegistro</servlet-name>
+        <servlet-class>Controlador.ControladorMaterialesRegistro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorMaterialesRegistro</servlet-name>
+        <url-pattern>/ControladorMaterialesRegistro</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorMaterialesEditar</servlet-name>
+        <servlet-class>Controlador.ControladorMaterialesEditar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorMaterialesEditar</servlet-name>
+        <url-pattern>/ControladorMaterialesEditar</url-pattern>
+    </servlet-mapping>
+    
+    
+    
     <servlet>
         <servlet-name>ControladorRegistroActividades</servlet-name>
         <servlet-class>Controlador.RegistroActividades</servlet-class>

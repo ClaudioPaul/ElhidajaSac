@@ -7,6 +7,8 @@ package ModeloDao;
 import Config.Conexion;
 import Modelo.Autos;
 import Modelo.Empleados;
+import Modelo.Marca;
+import Modelo.Modelo;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,21 +26,15 @@ public class AutosDao {
         conexion = new Conexion();
     }
     
-    public boolean Registrar(Empleados empleado) {
+    public boolean Registrar(Autos autos) {
         try {
             Connection accesoBD = conexion.getConexion();
-            CallableStatement cs = accesoBD.prepareCall("{call RegistrarEmpleados(?,?,?,?,?,?,?,?,?,?,?)}");
-            cs.setString(1, empleado.getNombres());
-            cs.setString(2, empleado.getApellidos());
-            cs.setInt(3, empleado.getIdTipoEmpleado());
-            cs.setInt(4, empleado.getIdEmpresaTerciaria());
-            cs.setString(5, empleado.getTipoDocumento());
-            cs.setString(6, empleado.getNumeroDocumento());
-            cs.setString(7, empleado.getTelefono());
-            cs.setString(8, empleado.getCorreo());
-            cs.setString(9, empleado.getDireccion());
-            cs.setString(10, empleado.getTipoLicencia());
-            cs.setString(11, empleado.getNumeroLicencia());
+            CallableStatement cs = accesoBD.prepareCall("{call RegistrarAutos(?,?,?,?,?)}");
+            cs.setString(1, autos.getMatricula());
+            cs.setInt(2, autos.getIdMarca());
+            cs.setInt(3, autos.getIdModelo());
+            cs.setString(4, autos.getGeneracion());
+            cs.setInt(5, autos.getIdEmpresa());
 
             int numFAfectadas = cs.executeUpdate();
 
@@ -73,60 +69,89 @@ public class AutosDao {
         return listaAutos;
     }
     
-    public Empleados Seleccionar(int IdEmpleados) {
-        Empleados empleados = null;
+    public List<Marca> listarMarca(){
+        ArrayList<Marca> listaMarca = new ArrayList();
+        Marca marca;
         try {
             Connection accesoBD = conexion.getConexion();
-            CallableStatement cs = accesoBD.prepareCall("{ call SeleccionarEmpleados(?)}");
-            cs.setInt(1, IdEmpleados);
+            CallableStatement cs = accesoBD.prepareCall("{ call MostrarMarca}");
             ResultSet rs = cs.executeQuery();
             while(rs.next()){
-                empleados = new Empleados();
-                empleados.setId(rs.getInt(1));
-                empleados.setNombres(rs.getString(2));
-                empleados.setApellidos(rs.getString(3));
-                empleados.setIdTipoEmpleado(rs.getInt(4));
-                empleados.setTipoEmpleado(rs.getString(5));
-                empleados.setIdEmpresaTerciaria(rs.getInt(6));
-                empleados.setEmpresaTercearia(rs.getString(7));
-                empleados.setNumeroDocumento(rs.getString(8));
-                empleados.setTelefono(rs.getString(9));
-                empleados.setCorreo(rs.getString(10));
-                empleados.setDireccion(rs.getString(11));
-                empleados.setTipoDocumento(rs.getString(12));
+                marca = new Marca();
+                marca.setId(rs.getInt(1));
+                marca.setMarca(rs.getString(2));
+                listaMarca.add(marca);
+            }
+        } catch (Exception e) {
+            
+        }
+        return listaMarca;
+    }
+    
+    public List<Modelo> listarModelo(){
+        ArrayList<Modelo> listaModelo = new ArrayList();
+        Modelo modelo;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call MostrarModelo}");
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                modelo = new Modelo();
+                modelo.setId(rs.getInt(1));
+                modelo.setModelo(rs.getString(2));
+                listaModelo.add(modelo);
+            }
+        } catch (Exception e) {
+            
+        }
+        return listaModelo;
+    }
+    
+    public Autos Seleccionar(int IdAutos) {
+        Autos autos = null;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call SeleccionarAutos(?)}");
+            cs.setInt(1, IdAutos);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                autos = new Autos();
+                autos.setId(rs.getInt(1));
+                autos.setMatricula(rs.getString(2));
+                autos.setIdMarca(rs.getInt(3));
+                autos.setMarca(rs.getString(4));
+                autos.setIdModelo(rs.getInt(5));
+                autos.setModelo(rs.getString(6));
+                autos.setGeneracion(rs.getString(7));
+                autos.setIdEmpresa(rs.getInt(8));
+                autos.setEmpresa(rs.getString(9));
             }
         } catch (Exception e) {
         }
-        return empleados;
+        return autos;
     }
     
-    public boolean Eliminar(int IdEmpleado) {
+    public boolean Eliminar(int IdAuto) {
         try {
             Connection accesoBD = conexion.getConexion();
-            CallableStatement cs = accesoBD.prepareCall("{ call EliminarEmpleados(?)}");
-            cs.setInt(1, IdEmpleado);
+            CallableStatement cs = accesoBD.prepareCall("{ call EliminarAutos(?)}");
+            cs.setInt(1, IdAuto);
             cs.executeUpdate();
         } catch (Exception e) {
         }
         return false;
     }
     
-    public boolean Editar(Empleados empleados) {
+    public boolean Editar(Autos autos) {
         try {
             Connection accesoBD = conexion.getConexion();
-            CallableStatement cs = accesoBD.prepareCall("{ call EditarEmpleados(?,?,?,?,?,?,?,?,?,?,?)}");
-            cs.setString(1, empleados.getNombres());
-            cs.setString(2, empleados.getApellidos());
-            cs.setInt(3, empleados.getIdTipoEmpleado());
-            cs.setInt(4, empleados.getIdEmpresaTerciaria());
-            cs.setString(5, empleados.getTipoDocumento());
-            cs.setString(6, empleados.getNumeroDocumento());
-            cs.setString(7, empleados.getTelefono());
-            cs.setString(8, empleados.getCorreo());
-            cs.setString(9, empleados.getDireccion());
-            cs.setString(10, empleados.getTipoLicencia());
-            cs.setString(11, empleados.getNumeroLicencia());
-            cs.setInt(12, empleados.getId());
+            CallableStatement cs = accesoBD.prepareCall("{ call EditarAutos(?,?,?,?,?,?)}");
+            cs.setString(1, autos.getMatricula());
+            cs.setInt(2, autos.getIdMarca());
+            cs.setInt(3, autos.getIdModelo());
+            cs.setString(4, autos.getGeneracion());
+            cs.setInt(5, autos.getIdEmpresa());
+            cs.setInt(6, autos.getId());
             
             int numFAfectadas = cs.executeUpdate();
 

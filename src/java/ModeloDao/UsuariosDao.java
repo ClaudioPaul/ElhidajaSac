@@ -90,7 +90,7 @@ public class UsuariosDao {
     public boolean Editar(Usuarios usuarios) {
         try {
             Connection accesoBD = conexion.getConexion();
-            CallableStatement cs = accesoBD.prepareCall("{ call EditarEmpresas(?,?,?,?,?,?)}");
+            CallableStatement cs = accesoBD.prepareCall("{ call EditarUsuarios(?,?,?,?)}");
             cs.setInt(1, usuarios.getIdEmpleado());
             cs.setString(2, usuarios.getUsuario());
             cs.setString(3, usuarios.getClave());
@@ -117,30 +117,29 @@ public class UsuariosDao {
 //        return false;
 //    }
 //    
-//    public List<Empresas> Buscar(String RazonSocial) {
-//        ArrayList<Empresas> listarEmpresas =new ArrayList();
-//        Empresas empresas;
-//        try {
-//            Connection accesoBD = conexion.getConexion();
-//            CallableStatement cs = accesoBD.prepareCall("{ call BuscarEmpresas(?)}");
-//            cs.setString(1, RazonSocial);
-//            ResultSet rs = cs.executeQuery();
-//            while(rs.next()){
-//                empresas = new Empresas();
-//                empresas.setId(rs.getInt(1));
-//                empresas.setRuc(rs.getString(2));
-//                empresas.setRazonSocial(rs.getString(3));
-//                empresas.setNombreRepresentante(rs.getString(4));
-//                empresas.setApellidoRepresentante(rs.getString(5));
-//                empresas.setDireccion(rs.getString(6));
-//                empresas.setTelefono(rs.getString(7));
-//                empresas.setCorreo(rs.getString(8));
-//                listarEmpresas.add(empresas);
-//            }
-//            
-//        } catch (Exception e) {
-//            
-//        }
-//        return listarEmpresas;
-//    }
+    public List<Usuarios> Buscar(String Nombre) {
+        ArrayList<Usuarios> listaUsuarios =new ArrayList();
+        Usuarios usuarios;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call BuscarEmpresas(?)}");
+            cs.setString(1, Nombre);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                 usuarios = new Usuarios();
+                usuarios.setId(rs.getInt(1));
+                usuarios.setIdEmpleado(rs.getInt(2));
+                String Nombres = rs.getString(3);
+                String Apellidos = rs.getString(4);
+                usuarios.setEmpleado(Nombres + " " + Apellidos);
+                usuarios.setUsuario(rs.getString(5));
+                usuarios.setClave(rs.getString(6));
+                listaUsuarios.add(usuarios);
+            }
+            
+        } catch (Exception e) {
+            
+        }
+        return listaUsuarios;
+    }
 }

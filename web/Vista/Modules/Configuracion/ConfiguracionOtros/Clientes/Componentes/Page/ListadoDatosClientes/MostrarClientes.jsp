@@ -48,7 +48,7 @@
       </div>
       <form action="ControladorEmpresas?menu=Empresas" method="POST">  
         <div class="grupo-buscar">
-          <input type="search" placeholder="Ingresar la Razón Social a Buscar" name="txtBuscar" />
+          <input type="search" placeholder="Ingresar la Razón Social a Buscar" name="txtBuscar"/>
           <button type="submit" name="accion" value="Buscar"><i class="uil uil-search"></i>Buscar</button>
           <button type="submit" name="accion" value="Cancelar"><i class="uil uil-times-circle"></i></button>
         </div>

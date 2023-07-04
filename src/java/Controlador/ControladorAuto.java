@@ -32,7 +32,7 @@ public class ControladorAuto extends HttpServlet {
     
     AutosDao autosDao = new AutosDao();
             
-    int idEmpleado;
+    int id;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,6 +51,11 @@ public class ControladorAuto extends HttpServlet {
                     case "Listar":
                         List listaEmpelado = autosDao.listar();
                         request.setAttribute("listaEmpelados", listaEmpelado);
+                    break;
+                    case "Eliminar":
+                       id = Integer.parseInt(request.getParameter("id"));
+                       autosDao.Eliminar(id);
+                       request.getRequestDispatcher("ControladorAuto?menu=Auto&accion=Listar").forward(request, response); 
                     break;
                 }
                 request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Autos/Componentes/Page/MostrarAutos/MostrarAutos.jsp").forward(request, response);

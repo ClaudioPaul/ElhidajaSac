@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -9,10 +9,12 @@ import Modelo.ApiReniecSunat;
 import Modelo.Empleados;
 import Modelo.Empresas;
 import Modelo.TipoEmpleado;
+import Modelo.Usuarios;
 import ModeloDao.ApiDNIRUC;
 import ModeloDao.EmpleadosDao;
 import ModeloDao.EmpresasDao;
 import ModeloDao.TipoEmpleadoDao;
+import ModeloDao.UsuariosDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,19 +27,15 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorEmpleadoEditar extends HttpServlet {
+public class ControladorUsuarioEditar extends HttpServlet {
 
-    
-    ApiDNIRUC apiD = new ApiDNIRUC();
-    TipoEmpleado tipo = new TipoEmpleado();
-    TipoEmpleadoDao tipoDao = new TipoEmpleadoDao();
-    Empresas empresas = new Empresas();
-    EmpresasDao empresasDao = new EmpresasDao();
+
     Empleados empleado = new Empleados();
     EmpleadosDao empleadoDao = new EmpleadosDao();
+    Usuarios usuario = new Usuarios();
+    UsuariosDao usuariosDao = new UsuariosDao();
             
-    int idEmpleado;
-    String BuscarDNI;
+    int id;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,50 +49,32 @@ public class ControladorEmpleadoEditar extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("EmpleadoEditar")){
+            if(menu.equals("UsuariosEditar")){
                 switch(accion){
                     case "Editar":
-                        List listaTipo= tipoDao.listar();
-                        request.setAttribute("listaTipo", listaTipo);
-                        List lista = empresasDao.listar();
-                        request.setAttribute("listaEmpresas", lista);
-                        idEmpleado = Integer.parseInt(request.getParameter("id"));
-                        Empleados emleado = empleadoDao.Seleccionar(idEmpleado);
-                        request.setAttribute("listaEmpleados", emleado);
+                        List listaEmpleado= empleadoDao.listar();
+                        request.setAttribute("listaEmpleado", listaEmpleado);
+                        id = Integer.parseInt(request.getParameter("id"));
+                        Usuarios usuarios = usuariosDao.Seleccionar(id);
+                        request.setAttribute("listaUsuarios", usuarios);
                     break;
                     case "Actualizar":
-                        String Nombres  = request.getParameter("txtNombres");
-                        String Apellidos  = request.getParameter("txtApellidos");
-                        String TipoEmpleado  = request.getParameter("txtTipoEmpelado");
-                        String Empresa  = request.getParameter("txtEmpresa");
-                        String TipoDoc  = request.getParameter("txtTipoDoc");
-                        String NumeroDoc  = request.getParameter("txtDni");
-                        String Telefono  = request.getParameter("txtTelefono");
-                        String Correo  = request.getParameter("txtCorreo");
-                        String Direccion  = request.getParameter("txtDireccion");
-                        String tipoLicencia = "Ninguna";
-                        String numeroLicencia = "123456789";
-                        empleado.setNombres(Nombres);
-                        empleado.setApellidos(Apellidos);
-                        empleado.setIdTipoEmpleado(Integer.parseInt(TipoEmpleado));
-                        empleado.setIdEmpresaTerciaria(Integer.parseInt(Empresa));
-                        empleado.setTipoDocumento(TipoDoc);
-                        empleado.setNumeroDocumento(NumeroDoc);
-                        empleado.setTelefono(Telefono);
-                        empleado.setCorreo(Correo);
-                        empleado.setDireccion(Direccion);
-                        empleado.setTipoLicencia(tipoLicencia);
-                        empleado.setNumeroLicencia(numeroLicencia);
-                        empleado.setId(idEmpleado);
-                        boolean editar = empleadoDao.Editar(empleado);
+                        String Empleado  = request.getParameter("txtEmpelado");
+                        String Usuario  = request.getParameter("txtUsuario");
+                        String Clave  = request.getParameter("txtClave");
+                        usuario.setIdEmpleado(Integer.parseInt(Empleado));
+                        usuario.setUsuario(Usuario);
+                        usuario.setClave(Clave);
+                        usuario.setId(id);
+                        boolean editar = usuariosDao.Editar(usuario);
                         if(editar){
                             request.setAttribute("MensajeConfirmacion", "Registro Actualizado");
                         }else{
-                            request.setAttribute("MensajeError", "Error en Registro");
+                            request.setAttribute("MensajeError", "Error");
                         }
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionBasica/Empleados/Componentes/Page/EditarEmpleados/EditarEmpleados.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionBasica/Usuarios/Componentes/Page/EditarUsuarios/EditarUsuarios.jsp").forward(request, response);
             }
     }
 

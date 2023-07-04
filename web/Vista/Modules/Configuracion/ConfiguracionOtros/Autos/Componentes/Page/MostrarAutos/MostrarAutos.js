@@ -4,3 +4,22 @@
  */
 
 
+function confirmarEliminacion(id) {
+    Swal.fire({
+      title: '¿Estás seguro de que deseas eliminar el Auto?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = `ControladorAuto?menu=Auto&accion=Eliminar&id=${id}`;
+        Swal.fire({
+          title: 'Auto Eliminado',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    });
+  }

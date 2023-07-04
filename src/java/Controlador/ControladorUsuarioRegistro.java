@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -9,8 +9,8 @@ import Modelo.ApiReniecSunat;
 import Modelo.Empleados;
 import Modelo.Empresas;
 import Modelo.TipoEmpleado;
+import Modelo.Usuarios;
 import ModeloDao.ApiDNIRUC;
-import ModeloDao.AutosDao;
 import ModeloDao.EmpleadosDao;
 import ModeloDao.EmpresasDao;
 import ModeloDao.TipoEmpleadoDao;
@@ -27,11 +27,15 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorUsuario extends HttpServlet {
+public class ControladorUsuarioRegistro extends HttpServlet {
 
-    UsuariosDao usuarioDao = new UsuariosDao();
-    
-    int idUsuarios;
+
+    Empleados empleado = new Empleados();
+    EmpleadosDao empleadoDao = new EmpleadosDao();
+    Usuarios usuario = new Usuarios();
+    UsuariosDao usuariosDao = new UsuariosDao();
+            
+    int id;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,17 +49,28 @@ public class ControladorUsuario extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("Usuarios")){
+            if(menu.equals("UsuarioRegistro")){
                 switch(accion){
-                    case "Listar":
-                       List listaUsuarios = usuarioDao.listar();
-                       request.setAttribute("listaUsuarios", listaUsuarios);
+                    case "Formulario":
+                        List listaEmpleado= empleadoDao.listar();
+                        request.setAttribute("listaEmpleado", listaEmpleado);
                     break;
-                    case "Cancelar":
-                        request.getRequestDispatcher("ControladorUsuario?menu=Usuarios&accion=Listar").forward(request, response);
+                    case "Agregar":
+                        String Empleado  = request.getParameter("txtEmpelado");
+                        String Usuario  = request.getParameter("txtUsuario");
+                        String Clave  = request.getParameter("txtClave");
+                        usuario.setIdEmpleado(Integer.parseInt(Empleado));
+                        usuario.setUsuario(Usuario);
+                        usuario.setClave(Clave);
+                        boolean editar = usuariosDao.Registrar(usuario);
+                        if(editar){
+                            request.setAttribute("MensajeConfirmacion", "Registrado");
+                        }else{
+                            request.setAttribute("MensajeError", "Error");
+                        }
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionBasica/Usuarios/Componentes/Page/MostrarUsuarios/MostrarUsuarios.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionBasica/Usuarios/Componentes/Page/RegistrarUsuarios/RegistroUsuarios.jsp").forward(request, response);
             }
     }
 

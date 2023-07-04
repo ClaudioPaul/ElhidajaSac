@@ -92,10 +92,9 @@ public class ControladorEmpleadoRegistro extends HttpServlet {
                         empleado.setDireccion(Direccion);
                         empleado.setTipoLicencia(tipoLicencia);
                         empleado.setNumeroLicencia(numeroLicencia);
-                        empleado.setId(id);
-                        boolean editar = empleadoDao.Editar(empleado);
-                        if(editar){
-                            request.setAttribute("MensajeConfirmacion", "Registro Actualizado");
+                        boolean registrar = empleadoDao.Registrar(empleado);
+                        if(registrar){
+                            request.setAttribute("MensajeConfirmacion", "Registrado");
                         }else{
                             request.setAttribute("MensajeError", "Error en Registro");
                         }

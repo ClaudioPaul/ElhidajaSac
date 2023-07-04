@@ -68,7 +68,7 @@
                 </a>
               </li>
               <li class="item">
-                <a href="#" target="myFrame">
+                <a href="ControladorMateriales?menu=Materiales&accion=Listar" target="myFrame">
                     <img src="Iconos/shipping-box-02.png" alt=""/>
                     Materiales
                 </a>

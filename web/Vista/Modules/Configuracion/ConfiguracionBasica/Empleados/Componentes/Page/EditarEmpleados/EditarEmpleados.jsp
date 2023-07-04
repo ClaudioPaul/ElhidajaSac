@@ -20,7 +20,7 @@
             href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
         />
         <link rel="stylesheet" 
-              href="Vista/Modules/Configuracion/ConfiguracionBasica/Empleados/Componentes/Page/RegistrarEmpleados/RegistroEmpleados.css"
+              href="Vista/Modules/Configuracion/ConfiguracionBasica/Empleados/Componentes/Page/EditarEmpleados/EditarEmpleados.css"
         />
     </head>
     <body>
