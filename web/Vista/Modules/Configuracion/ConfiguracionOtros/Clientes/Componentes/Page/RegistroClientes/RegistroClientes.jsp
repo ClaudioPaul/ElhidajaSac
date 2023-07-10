@@ -19,6 +19,12 @@
         <br>
         <br>
         <center>
+            <div class="grupo-boton-nuevo">
+            <button onclick="window.location.href='ControladorEmpresas?menu=Empresas&accion=Listar'">
+                <i class="uil uil-list-ul"></i>
+                Mostrar Empresas
+            </button>
+            </div>
         <div id="myModal" class="modal">
             <center><h2>REGISTRAR EMPRESAS</h2></center>
             <div class="modal-content">
@@ -32,11 +38,11 @@
                     <form class="FormularioRegistro" action="ControladorEmpresasRegistro?menu=EmpresasRegistro" method="POST">
                       <div class="Grupos">
                         <label>Ruc:</label>
-                        <input type="text" value="${Api.getRuc()}" name="txtRuc" required>
+                        <input type="text" value="${Api.getRuc()}" name="txtRuc" required readonly>
                       </div>
                       <div class="Grupos">
                         <label>Razón Social:</label>
-                        <input type="text" value="${Api.getRasonsocial()}" name="txtRazonsocial" required>
+                        <input type="text" value="${Api.getRasonsocial()}" name="txtRazonsocial" required readonly>
                       </div>
                       <div class="Grupos">
                         <label>Dirección de la Empresa:</label>
@@ -52,7 +58,7 @@
                       </div>
                       <div class="Grupos">
                         <label>Telefono:</label>
-                        <input type="number" name="txtTelefono" required>
+                        <input type="number" name="txtTelefono" maxlength="9" oninput="validarLongitud(this)" required>
                       </div>
                       <div class="Grupos">
                         <label>Correo:</label>
@@ -102,7 +108,29 @@
                 confirmButtonText: 'Aceptar'
               });
             </script>
+          <% } else if (request.getAttribute("MensajeErrorEstado") != null) { %>
+            <%-- Obtener el mensaje de error de la solicitud --%>
+            <% String mensajeError = (String) request.getAttribute("MensajeErrorEstado"); %>
+
+            <%-- Mostrar el mensaje de error utilizando SweetAlert con dos botones --%>
+            <script>
+              Swal.fire({
+                icon: 'warning',
+                text: '<%= mensajeError %>',
+                showCancelButton: true,
+                confirmButtonText: 'SI',
+                cancelButtonText: 'NO'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = 'ControladorEmpresasRegistro?menu=EmpresasRegistro&accion=Activar';
+                }
+              });
+            </script>
           <% } %>
+          
+          
+          
+          
           
           <%-- Verificar si existe el atributo "mensaje" --%>
             <% if (request.getAttribute("MensajeErrorBuscar") != null) { %>

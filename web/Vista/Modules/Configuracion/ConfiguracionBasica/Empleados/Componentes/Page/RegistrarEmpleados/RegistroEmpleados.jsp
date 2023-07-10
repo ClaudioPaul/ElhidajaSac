@@ -28,6 +28,12 @@
         <br>
         <br>
         <center>
+            <div class="grupo-boton-nuevo">
+            <button onclick="window.location.href='ControladorEmpleado?menu=Empleado&accion=Listar'">
+                <i class="uil uil-list-ul"></i>
+                Mostrar Emppleados
+            </button>
+            </div>
         <div id="myModal" class="modal">
             <center><h2>REGISTRAR EMPLEADOS</h2></center>
         <div class="modal-content">

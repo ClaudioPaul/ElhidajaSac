@@ -30,7 +30,7 @@
     <article class="encabezado-principal">
       <div class="grupo-principal">
         <div class="icono-encabezado">
-          <i class="uil uil-building"></i>
+          <i class="uil uil-user-plus"></i>
         </div>
         <p>Usuarios</p>
       </div>

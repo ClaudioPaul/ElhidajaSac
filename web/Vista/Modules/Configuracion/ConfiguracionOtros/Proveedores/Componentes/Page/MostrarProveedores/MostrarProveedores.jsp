@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MostrarAutos
-    Created on : 18 jun. 2023, 23:20:56
+    Document   : MostrarProveedores
+    Created on : 9 jul. 2023, 03:00:20
     Author     : CLAUDIO CRUZADO
 --%>
 
@@ -17,41 +17,40 @@
         />
         <link
             rel="stylesheet"
-            href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"/>
-        <link rel="stylesheet" href="Vista/Modules/Configuracion/ConfiguracionOtros/Autos/Componentes/Page/MostrarAutos/MostrarAutos.css"/>
-        <title>Autos</title>
+            href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+        />
+       <link rel="stylesheet" 
+            href="Vista/Modules/Configuracion/ConfiguracionOtros/Proveedores/Componentes/Page/MostrarProveedores/MostrarProveedores.css" 
+        />
     </head>
     <body>
         <br>
         <br>
         <br>
-        
     <article class="encabezado-principal">
       <div class="grupo-principal">
         <div class="icono-encabezado">
-          <i class="uil uil-bus-alt"></i>
+          <i class="uil uil-chat-bubble-user"></i>
         </div>
-        <p>Autos</p>
+        <p>Proveedores</p>
       </div>
-      <form action="ControladorAutoRegistro?menu=AutoRegistro" method="POST">
       <div class="grupo-boton-nuevo">
-        <button type="submit" name="accion" value="Formulario">
+        <button onclick="window.location.href='ControladorProveedoresRegistro?menu=ProveedoresRegistro&accion=Formulario'">
             <i class="uil uil-plus"></i>
             Nuevo
         </button>
       </div>
-      </form>
     </article>
     <article class="opciones-listado">
       <div class="grupo-boton-nuevo">
-        <button onclick="window.location.href='ControladorAuto?menu=Auto&accion=Listar'">
+        <button onclick="window.location.href='ControladorProveedores?menu=Proveedores&accion=Listar'">
             <i class="uil uil-list-ul"></i>
             Listar Todo
         </button>
       </div>
-      <form action="ControladorAuto?menu=Auto" method="POST">
+      <form action="ControladorProveedores?menu=Proveedores" method="POST">  
         <div class="grupo-buscar">
-          <input type="search" placeholder="Ingresar Matricula a buscar" value="" name="txtBuscar" required/>
+            <input type="search" placeholder="Ingresar la Razón Social a Buscar" name="txtBuscar" required/>
           <button type="submit" name="accion" value="Buscar"><i class="uil uil-search"></i>Buscar</button>
         </div>
       </form>
@@ -62,34 +61,34 @@
         <table class="table table-striped table-inverse table-responsive">
           <thead class="thead-inverse">
             <tr>
-                <th>Matricula</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Generación</th>
-                <th>Empresa</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+              <th>Ruc</th>
+              <th>Razón social</th>
+              <th>Representante</th>
+              <th>Direccion</th>
+              <th>Contacto</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
-            <c:forEach var="empresa" items="${listaEmpelados}">
+            <c:forEach var="empresa" items="${listaProveedores}">
             <tr>
-                <td>${empresa.getMatricula()}</td>
-                <td>${empresa.getMarca()}</td>
-                <td>${empresa.getModelo()}</td>
-                <td>${empresa.getGeneracion()}</td>
-                <td>${empresa.getEmpresa()}</td>
+                <td>${empresa.getRuc()}</td>
+                <td>${empresa.getRazonSocial()}</td>
+                <td>${empresa.getNombreRepresentante()} ${empresa.getApellidoRepresentante()}</td>
+                <td>${empresa.getDireccion()}</td>
+                <td>${empresa.getContacto()}</td>
                 <td>
-                  <button onclick="window.location.href='ControladorAutoEditar?menu=AutoEditar&accion=Editar&id=${empresa.getId()}'"
+                  <button onclick="window.location.href='ControladorProveedoresEditar?menu=ProveedoresEditar&accion=Editar&id=${empresa.getId()}'" 
                           class="btn-option-table btn-editar">
                     <i class="uil uil-pen"></i>
                   </button>
                 </td>
                 <td>
-                    <button onclick="confirmarEliminacion(${empresa.getId()})"
+                  <button onclick="confirmarEliminacion(${empresa.getId()})"
                           class="btn-option-table btn-eliminar">
-                        <i class="uil uil-trash"></i>
-                    </button>
+                    <i class="uil uil-trash"></i>
+                  </button>
                 </td>
             </tr>
             </c:forEach>
@@ -98,7 +97,7 @@
       </div>
     </article>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="Vista/Modules/Configuracion/ConfiguracionOtros/Autos/Componentes/Page/MostrarAutos/MostrarAutos.js" 
+        <script src="Vista/Modules/Configuracion/ConfiguracionOtros/Proveedores/Componentes/Page/MostrarProveedores/MostrarProveedores.js" 
                 type="text/javascript">
         </script>
         <%-- Verificar si existe el mensaje --%>
@@ -116,11 +115,12 @@
             }).then((result) => {
               if (result.isConfirmed) {
                 // Redirigir a la URL después de hacer clic en "Aceptar"
-                window.location.href = 'ControladorAuto?menu=Auto&accion=Listar';
+                window.location.href = 'ControladorProveedores?menu=Proveedores&accion=Listar';
               }
             });
           </script>
         <% } %>
+        
     </body>
 </html>
 

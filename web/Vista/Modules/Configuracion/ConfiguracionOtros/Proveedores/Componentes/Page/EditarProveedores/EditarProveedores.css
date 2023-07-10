@@ -3,60 +3,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 18 jun. 2023, 23:14:37
+    Created on : 9 jul. 2023, 22:49:53
     Author     : CLAUDIO CRUZADO
 */
 
-    .modal {
+.modal {
         width: 50%;
         border: 1px solid black;
         border-radius: 5px;
         /* Establece cualquier otro estilo que desees para el modal */
     }
     
-    .custom-confirm-button {
-        background-color: #3D3C3B !important;
-        color: #FFF !important;
-        box-shadow: none !important;
-    }
-
-    .custom-confirm-button:hover {
-        background-color: #4D4B4A !important;
-        box-shadow: none !important;
-    }
-    
     h2{
         font-weight: bold;
-    }
-    
-    .FormularioBuscar {
-        text-align: center;
-        margin-bottom: 5px;
-        /* Establece cualquier otro estilo que desees para el contenedor del formulario de búsqueda */
-    }
-    
-    .ConsultarRuc input[type="number"] {
-        width: 65%;
-        padding: 5px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        /* Establece cualquier otro estilo que desees para el campo de entrada de texto */
-    }
-    
-    .ConsultarRuc input[type="submit"] {
-        width: 25%;
-        padding: 5px 10px;
-        font-size: 14px;
-        background-color: #3D3C3B;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    .ConsultarRuc input[type="submit"]:hover {
-        background-color: #847D7D;
     }
     
     .ContenerdorFormularioRegistro {
@@ -105,10 +64,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         border-radius: 5px;
         cursor: pointer;
         margin-bottom: 10px;
+        margin-top: 10px;
         /* Establece cualquier otro estilo que desees para los botones de submit */
     }
     
     .Botones input[type="submit"]:hover {
         background-color: #847D7D;
     }
-    

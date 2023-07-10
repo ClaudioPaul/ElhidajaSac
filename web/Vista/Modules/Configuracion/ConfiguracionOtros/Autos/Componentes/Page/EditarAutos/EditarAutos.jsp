@@ -29,6 +29,12 @@
         <br>
         <br>
         <center>
+            <div class="grupo-boton-nuevo">
+            <button onclick="window.location.href='ControladorAuto?menu=Auto&accion=Listar'">
+                <i class="uil uil-list-ul"></i>
+                Mostrar Autos
+            </button>
+            </div>
         <div id="myModal" class="modal">
             <center><h2>EDITAR AUTOS</h2></center>
         <div class="modal-content">

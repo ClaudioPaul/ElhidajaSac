@@ -63,9 +63,6 @@ public class ControladorEmpresas extends HttpServlet {
                             request.setAttribute("listaEmpresas", listas);
                         }
                     break;
-                    case "Cancelar":
-                        request.getRequestDispatcher("ControladorEmpresas?menu=Empresas&accion=Listar").forward(request, response);
-                    break;
                 }
                 request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/ListadoDatosClientes/MostrarClientes.jsp").forward(request, response);
             }

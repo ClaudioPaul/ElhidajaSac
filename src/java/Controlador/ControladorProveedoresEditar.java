@@ -7,10 +7,10 @@ package Controlador;
 
 import Modelo.ApiReniecSunat;
 import Modelo.Empresas;
-import Modelo.Materiales;
+import Modelo.Proveedores;
 import ModeloDao.ApiDNIRUC;
 import ModeloDao.EmpresasDao;
-import ModeloDao.MaterialesDao;
+import ModeloDao.ProveedoresDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,14 +23,15 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorMateriales extends HttpServlet {
+public class ControladorProveedoresEditar extends HttpServlet {
 
     
-    Materiales materiales = new Materiales();
-    MaterialesDao materialesDao = new MaterialesDao();
+    ApiDNIRUC apiD = new ApiDNIRUC();
+    Proveedores proveedores = new Proveedores();
+    ProveedoresDao proveedoresDao = new ProveedoresDao();
             
-    int id;
-    String BuscarMateriales;
+    int idProveedores;
+    String BuscarRUC;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -44,28 +45,33 @@ public class ControladorMateriales extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("Materiales")){
+            if(menu.equals("ProveedoresEditar")){
                 switch(accion){
-                    case "Listar":
-                        List lista = materialesDao.listar();
-                        request.setAttribute("listaMateriales", lista);
+                    case "Editar":
+                        idProveedores = Integer.parseInt(request.getParameter("id"));
+                        Proveedores proveedor = proveedoresDao.Seleccionar(idProveedores);
+                        request.setAttribute("listaEmpresa", proveedor);
                     break;
-                    case "Eliminar":
-                        id = Integer.parseInt(request.getParameter("id"));
-                        materialesDao.Eliminar(id);
-                        request.getRequestDispatcher("ControladorMateriales?menu=Materiales&accion=Listar").forward(request, response);
-                    break;
-                    case "Buscar":
-                        BuscarMateriales =request.getParameter("txtBuscar");
-                        List listas = materialesDao.Buscar(BuscarMateriales);
-                        if(listas.isEmpty()){
-                            request.setAttribute("mensaje", "No se encontraron datos");
+                    case "Actualizar":
+                        String Direccions  = request.getParameter("txtDireccion");
+                        String NombreRepresentantes  = request.getParameter("txtNombre");
+                        String ApellidoRepresentantes  = request.getParameter("txtApellidos");
+                        String Telefonos  = request.getParameter("txtTelefono");
+                        String Correos  = request.getParameter("txtCorreo");
+                        proveedores.setDireccion(Direccions);
+                        proveedores.setNombreRepresentante(NombreRepresentantes);
+                        proveedores.setApellidoRepresentante(ApellidoRepresentantes);
+                        proveedores.setContacto(Telefonos);
+                        proveedores.setId(idProveedores);
+                        boolean editar = proveedoresDao.Editar(proveedores);
+                        if(editar){
+                            request.setAttribute("MensajeConfirmacion", "Registro Actualizado");
                         }else{
-                            request.setAttribute("listaMateriales", listas);
+                            request.setAttribute("MensajeError", "Error en Actualizar");
                         }
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionArticulos/Materiales/Componentes/Page/MostrarMateriales/MostrarMateriales.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Proveedores/Componentes/Page/EditarProveedores/EditarProveedores.jsp").forward(request, response);
             }
     }
 

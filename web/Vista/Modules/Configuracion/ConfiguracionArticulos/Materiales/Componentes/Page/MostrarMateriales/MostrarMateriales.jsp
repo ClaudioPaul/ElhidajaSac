@@ -29,7 +29,7 @@
     <article class="encabezado-principal">
       <div class="grupo-principal">
         <div class="icono-encabezado">
-          <i class="uil uil-users-alt"></i>
+          <i class="uil uil-truck-loading"></i>
         </div>
         <p>Materiales</p>
       </div>
@@ -43,14 +43,16 @@
       </form>
     </article>
     <article class="opciones-listado">
-      <div class="grupo-btn-opciones">
-        <button><i class="uil uil-download-alt"></i>Descargar PDF</button>
+      <div class="grupo-boton-nuevo">
+        <button onclick="window.location.href='ControladorMateriales?menu=Materiales&accion=Listar'">
+            <i class="uil uil-list-ul"></i>
+            Listar Todo
+        </button>
       </div>
-      <form action="#" method="POST">
+      <form action="ControladorMateriales?menu=Materiales" method="POST">
         <div class="grupo-buscar">
-          <input type="search" placeholder="Ingresar valor a buscar" value="" name="txtBuscar"/>
+          <input type="search" placeholder="Ingresar valor a buscar" value="" name="txtBuscar" required/>
           <button type="submit" name="accion" value="Buscar"><i class="uil uil-search"></i>Buscar</button>
-          <button type="submit" name="accion" value="Cancelar"><i class="uil uil-times-circle"></i></button>
         </div>
       </form>
     </article>
@@ -113,7 +115,7 @@
             }).then((result) => {
               if (result.isConfirmed) {
                 // Redirigir a la URL después de hacer clic en "Aceptar"
-                window.location.href = '#';
+                window.location.href = 'ControladorMateriales?menu=Materiales&accion=Listar';
               }
             });
           </script>

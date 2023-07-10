@@ -114,30 +114,27 @@ public class MaterialesDao {
         return false;
     }
     
-    public List<Empresas> Buscar(String RazonSocial) {
-        ArrayList<Empresas> listarEmpresas =new ArrayList();
-        Empresas empresas;
+    public List<Materiales> Buscar(String Nombre) {
+        ArrayList<Materiales> listarMateriales =new ArrayList();
+        Materiales materiales;
         try {
             Connection accesoBD = conexion.getConexion();
-            CallableStatement cs = accesoBD.prepareCall("{ call BuscarEmpresas(?)}");
-            cs.setString(1, RazonSocial);
+            CallableStatement cs = accesoBD.prepareCall("{ call BuscarMateriales(?)}");
+            cs.setString(1, Nombre);
             ResultSet rs = cs.executeQuery();
             while(rs.next()){
-                empresas = new Empresas();
-                empresas.setId(rs.getInt(1));
-                empresas.setRuc(rs.getString(2));
-                empresas.setRazonSocial(rs.getString(3));
-                empresas.setNombreRepresentante(rs.getString(4));
-                empresas.setApellidoRepresentante(rs.getString(5));
-                empresas.setDireccion(rs.getString(6));
-                empresas.setTelefono(rs.getString(7));
-                empresas.setCorreo(rs.getString(8));
-                listarEmpresas.add(empresas);
+                materiales = new Materiales();
+                materiales.setId(rs.getInt(1));
+                materiales.setNombre(rs.getString(2));
+                materiales.setDescripcion(rs.getString(3));
+                materiales.setPrecio(rs.getDouble(4));
+                materiales.setStock(rs.getInt(5));
+                listarMateriales.add(materiales);
             }
             
         } catch (Exception e) {
             
         }
-        return listarEmpresas;
+        return listarMateriales;
     }
 }

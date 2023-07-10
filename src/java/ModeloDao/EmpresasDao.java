@@ -70,6 +70,52 @@ public class EmpresasDao {
         return listarEmpresas;
     }
     
+    public String ValidarRuc(String Ruc) {
+        String Rucs = null;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call ValidarRuc(?)}");
+            cs.setString(1, Ruc);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+               Rucs = rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return Rucs;
+    }
+    
+    public String ValidarRucEstado(String Ruc) {
+        String Rucs = null;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call ValidarRucEstado(?)}");
+            cs.setString(1, Ruc);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+               Rucs = rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return Rucs;
+    }
+    
+    public boolean Activar(String ruc) {
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call ActivarEmpresa(?)}");
+            cs.setString(1, ruc);
+            
+            int numFAfectadas = cs.executeUpdate();
+
+            if(numFAfectadas>0){
+                return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
+    
     public Empresas Seleccionar(int Idempresas) {
         Empresas empresas = null;
         try {

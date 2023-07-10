@@ -162,4 +162,29 @@ public class AutosDao {
         }
         return false;
     }
+    
+    public List<Autos> Buscar(String Matricula) {
+         ArrayList<Autos> listaAutos =new ArrayList();
+        Autos autos;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call BuscarAutos(?)}");
+            cs.setString(1, Matricula);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                autos = new Autos();
+                autos.setId(rs.getInt(1));
+                autos.setMatricula(rs.getString(2));
+                autos.setMarca(rs.getString(3));
+                autos.setModelo(rs.getString(4));
+                autos.setGeneracion(rs.getString(5));
+                autos.setEmpresa(rs.getString(6));
+                listaAutos.add(autos);
+            }
+            
+        } catch (Exception e) {
+            
+        }
+        return listaAutos;
+    }
 }

@@ -41,18 +41,18 @@
       </div>
     </article>
     <article class="opciones-listado">
-      <div class="grupo-btn-opciones">
-        <button id="btnDescargarPDF" onclick="descargarPDF()">
-            <i class="uil uil-download-alt"></i>Descargar PDF
+      <div class="grupo-boton-nuevo">
+        <button onclick="window.location.href='ControladorEmpresas?menu=Empresas&accion=Listar'">
+            <i class="uil uil-list-ul"></i>
+            Listar Todo
         </button>
       </div>
       <form action="ControladorEmpresas?menu=Empresas" method="POST">  
         <div class="grupo-buscar">
-          <input type="search" placeholder="Ingresar la Razón Social a Buscar" name="txtBuscar"/>
+            <input type="search" placeholder="Ingresar la Razón Social a Buscar" name="txtBuscar" required/>
           <button type="submit" name="accion" value="Buscar"><i class="uil uil-search"></i>Buscar</button>
-          <button type="submit" name="accion" value="Cancelar"><i class="uil uil-times-circle"></i></button>
         </div>
-       </form>
+      </form>
     </article>
 
     <article class="bg-container-body">

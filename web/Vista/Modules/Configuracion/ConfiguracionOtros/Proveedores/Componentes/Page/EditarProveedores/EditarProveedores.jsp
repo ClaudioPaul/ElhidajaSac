@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MostrarMateriales
-    Created on : 18 jun. 2023, 23:24:43
+    Document   : EditarProveedores
+    Created on : 9 jul. 2023, 22:49:32
     Author     : CLAUDIO CRUZADO
 --%>
 
@@ -17,7 +17,7 @@
             rel="stylesheet"
             href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"/>
         <link rel="stylesheet" 
-              href="Vista\Modules\Configuracion\ConfiguracionOtros\Clientes\Componentes\Page\EditarClientes\EditarClientes.css"
+              href="Vista/Modules/Configuracion/ConfiguracionOtros/Proveedores/Componentes/Page/EditarProveedores/EditarProveedores.css"
         />
     </head>
     <body>
@@ -27,31 +27,39 @@
         <br>
         <center>
             <div class="grupo-boton-nuevo">
-            <button onclick="window.location.href='ControladorMateriales?menu=Materiales&accion=Listar'">
+            <button onclick="window.location.href='ControladorProveedores?menu=Proveedores&accion=Listar'">
                 <i class="uil uil-list-ul"></i>
-                Mostrar Materiales
+                Mostrar Proveedores
             </button>
             </div>
         <div id="myModal" class="modal">
-            <center><h2>ACTUALIZAR MATERIALES</h2></center>
+            <center><h2>ACTUALIZAR PROVEEDORES</h2></center>
             <div class="modal-content">
                 <div class="ContenerdorFormularioRegistro">
-                    <form class="FormularioRegistro" action="ControladorMaterialesEditar?menu=MaterialesEditar" method="POST">
+                    <form class="FormularioRegistro" action="ControladorProveedoresEditar?menu=ProveedoresEditar" method="POST">
                         <div class="Grupos">
-                            <label>Nombre:</label>
-                            <input type="text" value="${listaMateriales.getNombre()} "name="txtNombre" required >
+                            <label>Ruc:</label>
+                            <input type="text" value="${listaEmpresa.getRuc()} "name="txtRuc" required disabled>
                         </div>
                         <div class="Grupos">
-                            <label>Descripcion:</label>
-                            <input type="text" value="${listaMateriales.getDescripcion()}" name="txtDescripcion" required >
+                            <label>Razón Social:</label>
+                            <input type="text" value="${listaEmpresa.getRazonSocial()}" name="txtRazonsocial" required disabled>
                         </div>
                         <div class="Grupos">
-                            <label>Precio:</label>
-                            <input type="text" value="${listaMateriales.getPrecio()}" name="txtPrecio" required>
+                            <label>Dirección de la Empresa:</label>
+                            <input type="text" value="${listaEmpresa.getDireccion()}" name="txtDireccion" required>
                         </div>
                         <div class="Grupos">
-                            <label>Stock:</label>
-                            <input type="text" value="${listaMateriales.getStock()}" name="txtStock" disabled>
+                            <label>Nombre del Representante Legal:</label>
+                            <input type="text" value="${listaEmpresa.getNombreRepresentante()}" name="txtNombre" required>
+                        </div>
+                        <div class="Grupos">
+                            <label>Apellidos del Representante Legal:</label>
+                            <input type="text" value="${listaEmpresa.getApellidoRepresentante()}" name="txtApellidos" required>
+                        </div>
+                        <div class="Grupos">
+                            <label>Telefono:</label>
+                            <input type="number" value="${listaEmpresa.getContacto()}" name="txtTelefono" maxlength="9" oninput="validarLongitud(this)" required>
                         </div>
                         <div class="Botones">
                           <input type="submit" name="accion" value="Actualizar">
@@ -61,6 +69,9 @@
             </div>
         </div>
     </center>
+    <script src="Vista/Modules/Configuracion/ConfiguracionOtros/Proveedores/Componentes/Page/EditarProveedores/EditarProveedores.js" 
+                type="text/javascript">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <%-- Verificar si existe el atributo "MensajeConfirmacion" --%>
             <% if (request.getAttribute("MensajeConfirmacion") != null) { %>
@@ -77,7 +88,7 @@
               }).then((result) => {
                 if (result.isConfirmed) {
                   // Redirigir a la URL después de hacer clic en "Aceptar"
-                  window.location.href = 'ControladorMateriales?menu=Materiales&accion=Listar';
+                  window.location.href = 'ControladorProveedores?menu=Proveedores&accion=Listar';
                 }
               });
             </script>
@@ -95,11 +106,10 @@
               }).then((result) => {
                 if (result.isConfirmed) {
                   // Redirigir a la URL después de hacer clic en "Aceptar"
-                  window.location.href = 'ControladorEmpresas?menu=Empresas&accion=Listar';
+                  window.location.href = 'ControladorProveedores?menu=Proveedores&accion=Listar';
                 }
               });;
             </script>
           <% } %>
     </body>
 </html>
-

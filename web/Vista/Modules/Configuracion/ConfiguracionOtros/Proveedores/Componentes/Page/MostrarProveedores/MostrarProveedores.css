@@ -3,7 +3,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 18 jun. 2023, 23:12:48
+    Created on : 9 jul. 2023, 03:00:41
     Author     : CLAUDIO CRUZADO
 */
 
@@ -264,17 +264,11 @@ header h2 {
     text-align: center;
   }
  
-  th:nth-child(6),
-  td:nth-child(6) {
-    width: 14%;
-    padding: 8px;
-    text-align: center;
-  }
   
+  th:nth-child(6),
+  td:nth-child(6),
   th:nth-child(7),
-  td:nth-child(7),
-  th:nth-child(8),
-  td:nth-child(8) {
+  td:nth-child(7) {
     width: 6%;
     padding: 8px;
     text-align: center;

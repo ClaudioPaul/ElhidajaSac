@@ -7,10 +7,12 @@ package Controlador;
 
 import Modelo.ApiReniecSunat;
 import Modelo.Empresas;
+import Modelo.Proveedores;
 import Modelo.TipoEmpleado;
 import ModeloDao.ApiDNIRUC;
 import ModeloDao.EmpleadosDao;
 import ModeloDao.EmpresasDao;
+import ModeloDao.ProveedoresDao;
 import ModeloDao.TipoEmpleadoDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -24,14 +26,12 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorEmpresasRegistro extends HttpServlet {
+public class ControladorProveedoresRegistro extends HttpServlet {
 
     
     ApiDNIRUC apiD = new ApiDNIRUC();
-    Empresas empresas = new Empresas();
-    EmpresasDao empresasDao = new EmpresasDao();
-    TipoEmpleado tipo = new TipoEmpleado();
-    TipoEmpleadoDao tipoDao = new TipoEmpleadoDao();
+    Proveedores proveedores = new Proveedores();
+    ProveedoresDao proveedoresDao = new ProveedoresDao();
             
     int idEmpresa;
     String BuscarRUC;
@@ -50,19 +50,19 @@ public class ControladorEmpresasRegistro extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("EmpresasRegistro")){
+            if(menu.equals("ProveedoresRegistro")){
                 switch(accion){
-                    case "Formilario":
+                    case "Formulario":
                     break;
                     case "Buscar":
                     //Codigo para validar si existe un registro en la base de datos
                     ValidarRuc  = request.getParameter("txtBuscarRuc");
-                    Rucs = empresasDao.ValidarRuc(ValidarRuc);
+                    Rucs = proveedoresDao.ValidarRuc(ValidarRuc);
                     if(Rucs == null){
-                        Rucs = empresasDao.ValidarRucEstado(ValidarRuc);
+                        Rucs = proveedoresDao.ValidarRucEstado(ValidarRuc);
                         if(Rucs != null){
-                                request.setAttribute("MensajeErrorEstado", "Ya existe esta empresa en tu base de Datos pero está Inhabilitada"
-                                        + " ¿Desea Habilitar la Empresa?");
+                                request.setAttribute("MensajeErrorEstado", "Ya existe este proveedor en tu base de Datos pero está Inhabilitado"
+                                        + " ¿Desea Habilitar al Proveedor?");
                         }else{
                             // Buscar Ruc en SUNAT
                             BuscarRUC = request.getParameter("txtBuscarRuc");
@@ -78,7 +78,7 @@ public class ControladorEmpresasRegistro extends HttpServlet {
                             }
                         }
                     }else{
-                            request.setAttribute("MensajeErrorBuscar", "Ya existe esta empresa en tu base de Datos");
+                            request.setAttribute("MensajeErrorBuscar", "Ya existe este proveedor en tu base de Datos");
                     }
                     break;
                     case "Agregar":
@@ -87,16 +87,14 @@ public class ControladorEmpresasRegistro extends HttpServlet {
                         String Direccion  = request.getParameter("txtDireccion");
                         String NombreRepresentante  = request.getParameter("txtNombre");
                         String ApellidoRepresentante  = request.getParameter("txtApellidos");
-                        String Telefono  = request.getParameter("txtTelefono");
-                        String Correo  = request.getParameter("txtCorreo");
-                        empresas.setRuc(Ruc);
-                        empresas.setRazonSocial(RasonSocial);
-                        empresas.setDireccion(Direccion);
-                        empresas.setNombreRepresentante(NombreRepresentante);
-                        empresas.setApellidoRepresentante(ApellidoRepresentante);
-                        empresas.setTelefono(Telefono);
-                        empresas.setCorreo(Correo);
-                            boolean registro = empresasDao.Registrar(empresas);
+                        String Contacto  = request.getParameter("txtTelefono");
+                        proveedores.setRuc(Ruc);
+                        proveedores.setRazonSocial(RasonSocial);
+                        proveedores.setDireccion(Direccion);
+                        proveedores.setNombreRepresentante(NombreRepresentante);
+                        proveedores.setApellidoRepresentante(ApellidoRepresentante);
+                        proveedores.setContacto(Contacto);
+                            boolean registro = proveedoresDao.Registrar(proveedores);
                             if(registro){
                                 request.setAttribute("MensajeConfirmacion", "Regitrado");
                             }else{
@@ -104,15 +102,15 @@ public class ControladorEmpresasRegistro extends HttpServlet {
                             }
                     break;
                     case "Activar":
-                        boolean activar = empresasDao.Activar(ValidarRuc);
+                        boolean activar = proveedoresDao.Activar(ValidarRuc);
                         if(activar){
-                            request.setAttribute("MensajeConfirmacion", "Empresa Habilitada");
+                            request.setAttribute("MensajeConfirmacion", "Proveedor Habilitado");
                         }else{
-                            request.setAttribute("MensajeError", "Error en Activar");
+                            request.setAttribute("MensajeError", "Error en Habilitar");
                         }
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/RegistroClientes/RegistroClientes.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Proveedores/Componentes/Page/RegistroProveedores/RegistrarProveedores.jsp").forward(request, response);
             }
     }
 

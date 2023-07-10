@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class Conexion {
     public  Connection getConexion() throws ClassNotFoundException{
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String url = "jdbc:sqlserver://sql5097.site4now.net;databaseName=db_a98f37_elhidaja;user=db_a98f37_elhidaja_admin;password=Setiembre1997";
+        String url = "jdbc:sqlserver://DESKTOP-IMKHHN3;databaseName=db_a98f37_elhidaja;user=sa;password=1234";
         try {
             Connection con = DriverManager.getConnection(url);
             return con;

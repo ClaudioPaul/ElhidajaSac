@@ -159,6 +159,31 @@
         <url-pattern>/ControladorCompraRegistro</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>ControladorProveedores</servlet-name>
+        <servlet-class>Controlador.ControladorProveedores</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorProveedores</servlet-name>
+        <url-pattern>/ControladorProveedores</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorProveedoresRegistro</servlet-name>
+        <servlet-class>Controlador.ControladorProveedoresRegistro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorProveedoresRegistro</servlet-name>
+        <url-pattern>/ControladorProveedoresRegistro</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControladorProveedoresEditar</servlet-name>
+        <servlet-class>Controlador.ControladorProveedoresEditar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorProveedoresEditar</servlet-name>
+        <url-pattern>/ControladorProveedoresEditar</url-pattern>
+    </servlet-mapping>
+    
     
     <servlet>
         <servlet-name>ControladorRegistroActividades</servlet-name>

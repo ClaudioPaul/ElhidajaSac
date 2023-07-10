@@ -13,6 +13,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="Vista/shared/Componentes/sidebarprincipal/sidebar.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+        />
     </head>
     <body>
         <nav class="sidebar">
@@ -26,14 +34,14 @@
         <ul class="menu-items">
           <li class="item">
             <a href="#" target="myFrame">
-                <img src="Iconos/home.png" alt=""/>
+                <i class="uil uil-estate"></i>
                 Inicio
             </a>
           </li>
           <li class="item">
             <div class="submenu-item">
               <span>
-                  <img src="Iconos/account-service.png" alt=""/>
+                  <i class="uil uil-server"></i>
                   Mantenedores
               </span>
               <i class="fa-solid fa-chevron-right"></i>
@@ -45,31 +53,37 @@
               </div>
               <li class="item">
                 <a href="ControladorEmpresas?menu=Empresas&accion=Listar" target="myFrame">
-                    <img src="Iconos/building-fill.png" alt=""/>
+                    <i class="uil uil-building"></i>
                     Empresas
                 </a>
               </li>
               <li class="item">
                 <a href="ControladorEmpleado?menu=Empleado&accion=Listar" target="myFrame">
-                    <img src="Iconos/users-three-fill.png" alt=""/>
+                    <i class="uil uil-users-alt"></i>
                     Empleados
                 </a>
               </li>
               <li class="item">
                 <a href="ControladorUsuario?menu=Usuarios&accion=Listar" target="myFrame">
-                    <img src="Iconos/user-circle.png" alt=""/>
+                    <i class="uil uil-user-plus"></i>
                     Usuarios
                 </a>
               </li>
               <li class="item">
                 <a href="ControladorAuto?menu=Auto&accion=Listar" target="myFrame">
-                      <img src="Iconos/truck-minus.png" alt=""/>
+                      <i class="uil uil-bus-alt"></i>
                       Autos
                 </a>
               </li>
               <li class="item">
+                <a href="ControladorProveedores?menu=Proveedores&accion=Listar" target="myFrame">
+                    <i class="uil uil-chat-bubble-user"></i>
+                    Proveedores
+                </a>
+              </li>
+              <li class="item">
                 <a href="ControladorMateriales?menu=Materiales&accion=Listar" target="myFrame">
-                    <img src="Iconos/shipping-box-02.png" alt=""/>
+                    <i class="uil uil-truck-loading"></i>
                     Materiales
                 </a>
               </li>
@@ -77,20 +91,20 @@
           </li>
           <li class="item">
             <a href="ControladorCompras?menu=Compras&accion=Listar" target="myFrame">
-                <img src="Iconos/store-edit.png" alt=""/>
+                <i class="uil uil-shopping-cart"></i>
                 Compras
             </a>
           </li>
           <li class="item">
             <a href="ControladorRegistroActividades?menu=Actividades&accion=Listar" target="myFrame">
-                <img src="Iconos/round-shopping-basket.png" alt=""/>
+                <i class="uil uil-comment-alt-chart-lines"></i>
                 Actividades
             </a>
           </li>
           <li class="item">
             <div class="submenu-item">
               <span>
-                  <img src="Iconos/reports.png" alt=""/>
+                  <i class="uil uil-chart-bar"></i>
                   Reportes
               </span>
               <i class="fa-solid fa-chevron-right"></i>
@@ -102,13 +116,13 @@
               </div>
               <li class="item">
                 <a href="#" target="myFrame">
-                    <img src="Iconos/reports.png" alt=""/>
+                    <i class="uil uil-chart"></i>
                     Kardex
                 </a>
               </li>
               <li class="item">
                 <a href="#" target="myFrame">
-                    <img src="Iconos/tasks-app-24-filled.png" alt=""/>
+                    <i class="uil uil-clipboard-alt"></i>
                     R. Actividades
                 </a>
               </li>

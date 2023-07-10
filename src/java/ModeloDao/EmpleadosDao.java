@@ -115,7 +115,7 @@ public class EmpleadosDao {
     public boolean Editar(Empleados empleados) {
         try {
             Connection accesoBD = conexion.getConexion();
-            CallableStatement cs = accesoBD.prepareCall("{ call EditarEmpleados(?,?,?,?,?,?,?,?,?,?,?)}");
+            CallableStatement cs = accesoBD.prepareCall("{ call EditarEmpleados(?,?,?,?,?,?,?,?,?,?,?,?)}");
             cs.setString(1, empleados.getNombres());
             cs.setString(2, empleados.getApellidos());
             cs.setInt(3, empleados.getIdTipoEmpleado());

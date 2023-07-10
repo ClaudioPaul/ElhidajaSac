@@ -33,6 +33,7 @@ public class ControladorAuto extends HttpServlet {
     AutosDao autosDao = new AutosDao();
             
     int id;
+    String BuscarAuto;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -56,6 +57,15 @@ public class ControladorAuto extends HttpServlet {
                        id = Integer.parseInt(request.getParameter("id"));
                        autosDao.Eliminar(id);
                        request.getRequestDispatcher("ControladorAuto?menu=Auto&accion=Listar").forward(request, response); 
+                    break;
+                    case "Buscar":
+                        BuscarAuto =request.getParameter("txtBuscar");
+                        List listas = autosDao.Buscar(BuscarAuto);
+                        if(listas.isEmpty()){
+                            request.setAttribute("mensaje", "No se encontraron datos");
+                        }else{
+                            request.setAttribute("listaEmpelados", listas);
+                        }
                     break;
                 }
                 request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Autos/Componentes/Page/MostrarAutos/MostrarAutos.jsp").forward(request, response);

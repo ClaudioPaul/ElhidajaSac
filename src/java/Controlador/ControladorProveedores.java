@@ -7,10 +7,10 @@ package Controlador;
 
 import Modelo.ApiReniecSunat;
 import Modelo.Empresas;
-import Modelo.Materiales;
+import Modelo.Proveedores;
 import ModeloDao.ApiDNIRUC;
 import ModeloDao.EmpresasDao;
-import ModeloDao.MaterialesDao;
+import ModeloDao.ProveedoresDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,14 +23,15 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorMateriales extends HttpServlet {
+public class ControladorProveedores extends HttpServlet {
 
     
-    Materiales materiales = new Materiales();
-    MaterialesDao materialesDao = new MaterialesDao();
+    ApiDNIRUC apiD = new ApiDNIRUC();
+    Proveedores proveedores = new Proveedores();
+    ProveedoresDao proveedoresDao = new ProveedoresDao();
             
     int id;
-    String BuscarMateriales;
+    String BuscarProveedores;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -44,28 +45,28 @@ public class ControladorMateriales extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("Materiales")){
+            if(menu.equals("Proveedores")){
                 switch(accion){
                     case "Listar":
-                        List lista = materialesDao.listar();
-                        request.setAttribute("listaMateriales", lista);
+                        List lista = proveedoresDao.listar();
+                        request.setAttribute("listaProveedores", lista);
                     break;
                     case "Eliminar":
                         id = Integer.parseInt(request.getParameter("id"));
-                        materialesDao.Eliminar(id);
-                        request.getRequestDispatcher("ControladorMateriales?menu=Materiales&accion=Listar").forward(request, response);
+                        proveedoresDao.Eliminar(id);
+                        request.getRequestDispatcher("ControladorProveedores?menu=Proveedores&accion=Listar").forward(request, response);
                     break;
                     case "Buscar":
-                        BuscarMateriales =request.getParameter("txtBuscar");
-                        List listas = materialesDao.Buscar(BuscarMateriales);
+                        BuscarProveedores = request.getParameter("txtBuscar");
+                        List listas = proveedoresDao.Buscar(BuscarProveedores);
                         if(listas.isEmpty()){
                             request.setAttribute("mensaje", "No se encontraron datos");
                         }else{
-                            request.setAttribute("listaMateriales", listas);
+                            request.setAttribute("listaProveedores", listas);
                         }
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionArticulos/Materiales/Componentes/Page/MostrarMateriales/MostrarMateriales.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Configuracion/ConfiguracionOtros/Proveedores/Componentes/Page/MostrarProveedores/MostrarProveedores.jsp").forward(request, response);
             }
     }
 

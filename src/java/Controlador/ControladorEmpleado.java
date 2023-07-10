@@ -62,9 +62,6 @@ public class ControladorEmpleado extends HttpServlet {
                         empleadoDao.Eliminar(idEmpleado);
                         request.getRequestDispatcher("ControladorEmpleado?menu=Empleado&accion=Listar").forward(request, response);
                     break;
-                    case "Cancelar":
-                        request.getRequestDispatcher("ControladorEmpleado?menu=Empleado&accion=Listar").forward(request, response);
-                    break;
                     case "Buscar":
                         BuscarEmpleado =request.getParameter("txtBuscar");
                         List listas = empleadoDao.Buscar(BuscarEmpleado);

@@ -90,7 +90,7 @@ public class ControladorEmpleadoEditar extends HttpServlet {
                         if(editar){
                             request.setAttribute("MensajeConfirmacion", "Registro Actualizado");
                         }else{
-                            request.setAttribute("MensajeError", "Error en Registro");
+                            request.setAttribute("MensajeError", "Error en Actualizar");
                         }
                     break;
                 }

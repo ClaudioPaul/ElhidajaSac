@@ -19,6 +19,12 @@
         <br>
         <br>
         <center>
+            <div class="grupo-boton-nuevo">
+            <button onclick="window.location.href='ControladorEmpresas?menu=Empresas&accion=Listar'">
+                <i class="uil uil-list-ul"></i>
+                Mostrar Empresas
+            </button>
+            </div>
         <div id="myModal" class="modal">
             <center><h2>ACTUALIZAR EMPRESAS</h2></center>
             <div class="modal-content">
@@ -46,7 +52,7 @@
                         </div>
                         <div class="Grupos">
                             <label>Telefono:</label>
-                            <input type="number" value="${listaEmpresa.getTelefono()}" name="txtTelefono" required>
+                            <input type="number" value="${listaEmpresa.getTelefono()}" name="txtTelefono" maxlength="9" oninput="validarLongitud(this)" required>
                         </div>
                         <div class="Grupos">
                             <label>Correo:</label>
@@ -60,6 +66,9 @@
             </div>
         </div>
     </center>
+    <script src="Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/EditarClientes/EditarClientes.js" 
+                type="text/javascript">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <%-- Verificar si existe el atributo "MensajeConfirmacion" --%>
             <% if (request.getAttribute("MensajeConfirmacion") != null) { %>
