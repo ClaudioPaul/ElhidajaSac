@@ -29,14 +29,14 @@
         <br>
         <br>
         <center>
+        <div id="myModal" class="modal">
+            <center><h2>EDITAR EMPLEADOS</h2></center>
             <div class="grupo-boton-nuevo">
             <button onclick="window.location.href='ControladorEmpleado?menu=Empleado&accion=Listar'">
                 <i class="uil uil-list-ul"></i>
                 Mostrar Empleados
             </button>
             </div>
-        <div id="myModal" class="modal">
-            <center><h2>EDITAR EMPLEADOS</h2></center>
         <div class="modal-content">
     <div class="ContenerdorFormularioRegistro">
         <form class="FormularioRegistro" action="ControladorEmpleadoEditar?menu=EmpleadoEditar" method="POST">                        

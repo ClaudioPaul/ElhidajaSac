@@ -26,14 +26,15 @@
         <br>
         <br>
         <center>
+            
+        <div id="myModal" class="modal">
+            <center><h2>REGISTRAR MATERIALES</h2></center>
             <div class="grupo-boton-nuevo">
             <button onclick="window.location.href='ControladorMateriales?menu=Materiales&accion=Listar'">
                 <i class="uil uil-list-ul"></i>
                 Mostrar Materiales
             </button>
             </div>
-        <div id="myModal" class="modal">
-            <center><h2>REGISTRAR MATERIALES</h2></center>
             <div class="modal-content">
                 <div class="FormularioBuscar">
                 </div>

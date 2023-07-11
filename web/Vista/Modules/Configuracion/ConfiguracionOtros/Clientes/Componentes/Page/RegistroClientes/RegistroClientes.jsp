@@ -12,6 +12,14 @@
         <link rel="stylesheet" 
               href="Vista\Modules\Configuracion\ConfiguracionOtros\Clientes\Componentes\Page\RegistroClientes\RegistroClientes.css"
         />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+        />
     </head>
     <body>
         <br>
@@ -19,14 +27,13 @@
         <br>
         <br>
         <center>
-            <div class="grupo-boton-nuevo">
-            <button onclick="window.location.href='ControladorEmpresas?menu=Empresas&accion=Listar'">
-                <i class="uil uil-list-ul"></i>
-                Mostrar Empresas
-            </button>
-            </div>
         <div id="myModal" class="modal">
             <center><h2>REGISTRAR EMPRESAS</h2></center>
+                        <div class="grupo-boton-nuevo">
+                                <button onclick="window.location.href='ControladorEmpresas?menu=Empresas&accion=Listar'">
+                                    Mostrar Empresas
+                                </button>
+                        </div>
             <div class="modal-content">
                 <div class="FormularioBuscar">
                     <form class="ConsultarRuc" action="ControladorEmpresasRegistro?menu=EmpresasRegistro" method="POST">

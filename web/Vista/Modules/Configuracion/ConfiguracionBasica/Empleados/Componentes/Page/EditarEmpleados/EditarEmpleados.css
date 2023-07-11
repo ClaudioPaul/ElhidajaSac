@@ -14,25 +14,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         /* Establece cualquier otro estilo que desees para el modal */
     }
     
-    .swal2-confirm {
-    background-color: #3D3C3B !important;
-    color: #FFF !important;
-    box-shadow: none !important;
+    .grupo-boton-nuevo button {
+    padding: 8px 16px;
+    background-color: #3D3C3B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: background-color 0.3s;
+}
+
+    .grupo-boton-nuevo button:hover {
+        background-color: #847D7D;
+    }
+    
+    .custom-confirm-button {
+        background-color: #3D3C3B !important;
+        color: #FFF !important;
+        box-shadow: none !important;
     }
 
-    .swal2-confirm:hover {
-    background-color: #4D4B4A !important;
-    color: #FFF !important;
-    box-shadow: none !important;
+    .custom-confirm-button:hover {
+        background-color: #4D4B4A !important;
+        box-shadow: none !important;
     }
     
     h2{
         font-weight: bold;
     }
-   
     
     .FormularioBuscar {
         text-align: center;
+        margin-bottom: 5px;
         /* Establece cualquier otro estilo que desees para el contenedor del formulario de búsqueda */
     }
     
@@ -61,8 +75,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     }
     
     .ContenerdorFormularioRegistro {
-        width: 92%;
-        margin-top: 5px;
+        width: 90%;
     }
     
     .FormularioRegistro {
@@ -81,35 +94,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         text-align: left;
     }
     
-    .GruposSelect .Enlinea{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 5px;
-        width: 90%;
-    }
-    
-     .GruposSelect {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 5px;
-    }
-    
-    .GruposSelect .Enlinea label{
-        margin-bottom: 5px;
-        text-align: left;
-    }
-    
-    .GruposSelect .Enlinea select{
-        padding: 5px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    
     .Grupos input[type="text"],
     .Grupos input[type="number"],
-    .Grupos input[type="email"],
-    .Grupos select {
+    .Grupos input[type="email"] {
         padding: 5px;
         font-size: 14px;
         border: 1px solid #ccc;
@@ -139,3 +126,4 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     .Botones input[type="submit"]:hover {
         background-color: #847D7D;
     }
+    

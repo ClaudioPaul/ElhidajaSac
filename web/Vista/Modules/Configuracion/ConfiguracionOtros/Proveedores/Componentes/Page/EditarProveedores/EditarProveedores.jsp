@@ -26,14 +26,15 @@
         <br>
         <br>
         <center>
+            
+        <div id="myModal" class="modal">
+            <center><h2>ACTUALIZAR PROVEEDORES</h2></center>
             <div class="grupo-boton-nuevo">
             <button onclick="window.location.href='ControladorProveedores?menu=Proveedores&accion=Listar'">
                 <i class="uil uil-list-ul"></i>
                 Mostrar Proveedores
             </button>
             </div>
-        <div id="myModal" class="modal">
-            <center><h2>ACTUALIZAR PROVEEDORES</h2></center>
             <div class="modal-content">
                 <div class="ContenerdorFormularioRegistro">
                     <form class="FormularioRegistro" action="ControladorProveedoresEditar?menu=ProveedoresEditar" method="POST">

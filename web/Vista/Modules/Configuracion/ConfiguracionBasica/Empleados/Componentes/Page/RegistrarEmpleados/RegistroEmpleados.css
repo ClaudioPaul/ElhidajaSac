@@ -139,3 +139,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     .Botones input[type="submit"]:hover {
         background-color: #847D7D;
     }
+    
+    .grupo-boton-nuevo button {
+    padding: 8px 16px;
+    background-color: #3D3C3B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 8px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s;
+}
+
+    .grupo-boton-nuevo button:hover {
+        background-color: #847D7D;
+    }

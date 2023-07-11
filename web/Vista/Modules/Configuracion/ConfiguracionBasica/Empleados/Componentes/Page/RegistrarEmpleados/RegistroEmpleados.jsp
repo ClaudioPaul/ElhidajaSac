@@ -28,14 +28,14 @@
         <br>
         <br>
         <center>
+        <div id="myModal" class="modal">
+            <center><h2>REGISTRAR EMPLEADOS</h2></center>
             <div class="grupo-boton-nuevo">
             <button onclick="window.location.href='ControladorEmpleado?menu=Empleado&accion=Listar'">
                 <i class="uil uil-list-ul"></i>
                 Mostrar Emppleados
             </button>
             </div>
-        <div id="myModal" class="modal">
-            <center><h2>REGISTRAR EMPLEADOS</h2></center>
         <div class="modal-content">
             <form class="ConsultarRuc" action="ControladorEmpleadoRegistro?menu=EmpleadoRegistro" method="POST">
                 <input type="number" name="txtBuscarDNI" placeholder="Ingresar DNI" maxlength="8" oninput="validarLongitud(this)" required>
