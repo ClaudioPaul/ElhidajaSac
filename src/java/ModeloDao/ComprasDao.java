@@ -34,11 +34,10 @@ public class ComprasDao {
             Connection accesoBD = conexion.getConexion();
             CallableStatement cs = accesoBD.prepareCall("{call RegistraCompras(?,?,?,?,?)}");
             cs.setInt(1, compras.getIdProveedores());
-            cs.setDate(2, new java.sql.Date(compras.getFecha().getTime()));
+            cs.setString(2, compras.getFecha());
             cs.setString(3, compras.getSerie());
             cs.setInt(4, compras.getCorrelativo());
             cs.setDouble(5, compras.getTotal());
-            cs.setBytes(6, compras.getArchivo()); // Utilizar setBytes() para un byte[]
 
             int numFAfectadas = cs.executeUpdate();
 
@@ -48,6 +47,21 @@ public class ComprasDao {
         } catch (Exception e) {
         }
         return false;
+    }
+    
+    public int listarCompras() {
+        int IdCompra = 0;
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call MostrarComprasID}");
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                IdCompra = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            
+        }
+        return IdCompra;
     }
     
     public List<Proveedores> listarProveedores() {

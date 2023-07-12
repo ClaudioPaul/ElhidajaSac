@@ -49,6 +49,28 @@ document.getElementById("agregarBtn").addEventListener("click", function() {
 
     cantidadInput.value = "";
     precioInput.value = "";
+
+    // Agregar los datos a un array para enviar al controlador
+ var tablaCompras = [];
+    var rows = tablaComprasBody.rows;
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var data = {
+            id: row.cells[0].textContent,
+            material: row.cells[1].textContent,
+            cantidad: row.cells[2].textContent,
+            precio: row.cells[3].textContent,
+            subtotal: row.cells[4].textContent
+        };
+        tablaCompras.push(data);
+    }
+
+    var tablaComprasInput = document.createElement("input");
+    tablaComprasInput.type = "hidden";
+    tablaComprasInput.name = "tablaCompras";
+    tablaComprasInput.value = JSON.stringify(tablaCompras);
+    document.getElementById("formCompras").appendChild(tablaComprasInput);
 });
 
 function actualizarTotal() {
@@ -63,8 +85,15 @@ function actualizarTotal() {
     });
 
     var totalLabel = document.getElementById("totalLabel");
+    var totalInput = document.getElementById("txtTotal");
+
     totalLabel.textContent = "Total: " + total.toFixed(2); // Mostrar el total con 2 decimales redondeados
+    totalInput.value = total.toFixed(2); // Asignar el total al valor del input
 }
+
+// Luego de asignar el total al cargar la página, llamar a la función actualizarTotal()
+actualizarTotal();
+
 
 $(document).ready(function() {
     $('#selectMaterial').select2();

@@ -28,12 +28,13 @@
     <div class="Botones">
         <button type="button" id="agregarBtn">Agregar</button>
     </div>
-
+    <form action="ControladorCompraRegistro?menu=CompraRegistro" method="POST" id="formCompras">
     <div class="form-container">
-        <div class="FormularioRegistro">                        
+        <div class="FormularioRegistro">
+            
             <div class="Grupos">
                 <label>Proveedores:</label>
-                <select name="txtMarca">
+                <select name="txtProveedor">
                     <option value="0"></option>
                     <c:forEach var="marca" items="${listaproveedores}">
                         <option value="${marca.getId()}">${marca.getRazonSocial()}</option>
@@ -52,8 +53,15 @@
                 <label>Correlativo:</label>
                 <input type="number" name="txtCorrelativo" required>
             </div>
+            <div class="Grupos">
+                <label>Total:</label>
+                <input type="number" name="txtTotal" id="txtTotal" step="0.01" min="0" max="1000" readonly>
+            </div>
+            <div class="Botones">
+                <button type="submit" name="accion" value="Agregar">Guardar</button>
+            </div>
         </div>
-            
+        
         <div class="FormularioRegistro">                        
             <div class="Grupos">
                 <label>Materiales:</label>
@@ -66,19 +74,16 @@
             </div>
             <div class="Grupos">
                 <label>Cantidad:</label>
-                <input type="number" name="txtCantidad" required>
+                <input type="number" name="txtCantidad">
             </div>
             <div class="Grupos">
                 <label>Precio:</label>
-                <input type="number" name="txtPrecio" step="0.01" min="0" max="1000" required>
+                <input type="number" name="txtPrecio" step="0.01" min="0" max="1000">
             </div>
         </div>
-    </div>
-
-    <div class="Botones">
-        <button type="button" id="guardarBtn">Guardar</button>
-    </div>
         
+    </div>      
+    </form>
     <center>
     <table class="table table-striped table-inverse table-responsive">
         <thead class="thead-inverse">
@@ -90,19 +95,55 @@
                 <th>Subtotal</th>
             </tr>
         </thead>
-        <tbody id="tablaComprasBody">
+        <tbody id="tablaComprasBody" name="tablaComprasBody">
             <!-- Aquí se agregarán las filas dinámicamente -->
         </tbody>
+            
     </table>
     </center>
-
     <div class="Botones">
-    <span id="totalLabel">Total: 0</span>
+        <span id="totalLabel">Total: 0</span>
     </div>
+    
+    <input type="hidden" name="tablaCompras" id="tablaComprasInput" />
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Vista/Modules/Documentos/Compras/Componentes/Page/RegistroCompras/RegistroCompras.js" type="text/javascript"></script>
+    
+    <%-- Verificar si existe el atributo "MensajeConfirmacion" --%>
+    <% if (request.getAttribute("MensajeConfirmacion") != null) { %>
+        <%-- Obtener el mensaje de confirmación de la solicitud --%>
+        <% String mensajeConfirmacion = (String) request.getAttribute("MensajeConfirmacion"); %>
+
+        <%-- Mostrar el mensaje de confirmación utilizando SweetAlert --%>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Confirmación',
+                text: '<%= mensajeConfirmacion %>',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirigir a la URL después de hacer clic en "Aceptar"
+                    window.location.href = 'ControladorCompras?menu=Compras&accion=Listar';
+                }
+            });
+        </script>
+    <% } else if (request.getAttribute("MensajeError") != null) { %>
+        <%-- Obtener el mensaje de error de la solicitud --%>
+        <% String mensajeError = (String) request.getAttribute("MensajeError"); %>
+
+        <%-- Mostrar el mensaje de error utilizando SweetAlert --%>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '<%= mensajeError %>',
+                confirmButtonText: 'Aceptar'
+            });
+        </script>
+    <% } %>
     
 </body>
 </html>

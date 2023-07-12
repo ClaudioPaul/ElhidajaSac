@@ -6,4 +6,128 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : 18 jun. 2023, 23:42:44
     Author     : CLAUDIO CRUZADO
 */
+* {
+    font-family: Poppins, 'arial';
+    margin: 0;
+    box-sizing: border-box;
+}
+.container {
+    display: flex;
+}
 
+.table-container {
+    width: 50%;
+    padding: 24px;
+}
+
+.table-container h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+table{
+    border-spacing: 0px;
+    height: 100%;
+  }
+  
+  thead {
+    height: 100%;
+    position: sticky;
+    top: 0;
+    background-color: #7C8071;
+    color: white;
+  }
+  
+  tbody {
+    display: block;
+    height: 100%;
+  }
+  
+  tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    transition: all 0.3s ease;
+  }
+  
+  th:hover {
+    cursor: pointer;
+    background-color: #3D3C3B;
+  }
+  
+  th, td {
+    width: auto;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  tbody tr:hover {
+    background-color: rgba(224, 224, 224, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  td {
+    font-size: 14px;
+  }
+  
+  .encabezado-principal {
+    width: 100%;
+    height: 120px;
+    background-color: #7C8071;
+    display: flex;
+    padding: 0 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grupo-principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-encabezado {
+    height: 103px;
+    width: 103px;
+    background-color: #3D3C3B;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-encabezado i {
+    font-size: 38px;
+    color: #7C8071;
+}
+
+.grupo-principal p {
+    margin-left: 24px;
+    font-size: 24px;
+    color: #DDE3CA;
+}
+
+.grupo-boton-nuevo button{
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #DDE3CA;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.grupo-boton-nuevo button i {
+    font-size: 20px;
+    margin-right: 4px;
+}
+
+.grupo-boton-nuevo button:hover {
+    background-color: #3D3C3B;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #DDE3CA;
+}

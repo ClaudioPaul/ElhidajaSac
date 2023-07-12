@@ -186,11 +186,23 @@
     
     
     <servlet>
-        <servlet-name>ControladorRegistroActividades</servlet-name>
-        <servlet-class>Controlador.RegistroActividades</servlet-class>
+        <servlet-name>ControladorActividades</servlet-name>
+        <servlet-class>Controlador.ControladorActividades</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ControladorRegistroActividades</servlet-name>
-        <url-pattern>/ControladorRegistroActividades</url-pattern>
+        <servlet-name>ControladorActividades</servlet-name>
+        <url-pattern>/ControladorActividades</url-pattern>
     </servlet-mapping>
+    
+        
+    <servlet>
+        <servlet-name>ControladorKardex</servlet-name>
+        <servlet-class>Controlador.ControladorKardex</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControladorKardex</servlet-name>
+        <url-pattern>/ControladorKardex</url-pattern>
+    </servlet-mapping>
+    
+    
 </web-app>

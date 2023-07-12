@@ -6,11 +6,13 @@
 package Controlador;
 
 import Modelo.ApiReniecSunat;
+import Modelo.DetalleCompra;
 import Modelo.Empleados;
 import Modelo.Empresas;
 import Modelo.TipoEmpleado;
 import ModeloDao.ApiDNIRUC;
 import ModeloDao.AutosDao;
+import ModeloDao.DetalleComprasDao;
 import ModeloDao.EmpleadosDao;
 import ModeloDao.EmpresasDao;
 import ModeloDao.TipoEmpleadoDao;
@@ -26,13 +28,14 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorRegistroActividades extends HttpServlet {
+public class ControladorActividades extends HttpServlet {
 
     
     
-    AutosDao autosDao = new AutosDao();
+    DetalleCompra detalleCompra = new DetalleCompra();
+    DetalleComprasDao detalleComprasDao = new DetalleComprasDao();
             
-    int idEmpleado;
+    int id;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

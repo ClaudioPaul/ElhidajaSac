@@ -14,16 +14,13 @@ public class Compras {
     private int Id;
     private int IdProveedores;
     private int Proveedores;
-    private Date Fecha;
+    private String Fecha;
     private String Serie;
     private int Correlativo;
     private Double Total;
     private byte[] Archivo;
 
-    public Compras() {
-    }
-
-    public Compras(int Id, int IdProveedores, int Proveedores, Date Fecha, String Serie, int Correlativo, Double Total, byte[] Archivo) {
+    public Compras(int Id, int IdProveedores, int Proveedores, String Fecha, String Serie, int Correlativo, Double Total, byte[] Archivo) {
         this.Id = Id;
         this.IdProveedores = IdProveedores;
         this.Proveedores = Proveedores;
@@ -32,6 +29,9 @@ public class Compras {
         this.Correlativo = Correlativo;
         this.Total = Total;
         this.Archivo = Archivo;
+    }
+
+    public Compras() {
     }
 
     public int getId() {
@@ -58,11 +58,11 @@ public class Compras {
         this.Proveedores = Proveedores;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return Fecha;
     }
 
-    public void setFecha(Date Fecha) {
+    public void setFecha(String Fecha) {
         this.Fecha = Fecha;
     }
 
@@ -97,6 +97,7 @@ public class Compras {
     public void setArchivo(byte[] Archivo) {
         this.Archivo = Archivo;
     }
+
     
     
 }

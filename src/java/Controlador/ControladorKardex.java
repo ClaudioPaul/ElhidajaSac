@@ -28,7 +28,7 @@ import java.util.List;
  *
  * @author Claudio Cruzado
  */
-public class ControladorCompras extends HttpServlet {
+public class ControladorKardex extends HttpServlet {
 
     
     
@@ -49,14 +49,14 @@ public class ControladorCompras extends HttpServlet {
             throws ServletException, IOException {
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
-            if(menu.equals("Compras")){
+            if(menu.equals("Kardex")){
                 switch(accion){
                     case "Listar":
                         List listaDetalle = detalleComprasDao.listar();
-                        request.setAttribute("listaDetalle", listaDetalle);
+                        request.setAttribute("listaEntradas", listaDetalle);
                     break;
                 }
-                request.getRequestDispatcher("Vista/Modules/Documentos/Compras/Componentes/Page/MostrarCompras/MostrarCompras.jsp").forward(request, response);
+                request.getRequestDispatcher("Vista/Modules/Documentos/Inventario/Componentes/Page/MostrarInventario/MostrarInventario.jsp").forward(request, response);
             }
     }
 

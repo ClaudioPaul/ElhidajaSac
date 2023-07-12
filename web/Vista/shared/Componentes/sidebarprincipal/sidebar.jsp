@@ -96,7 +96,7 @@
             </a>
           </li>
           <li class="item">
-            <a href="ControladorRegistroActividades?menu=Actividades&accion=Listar" target="myFrame">
+            <a href="ControladorActividades?menu=Actividades&accion=Listar" target="myFrame">
                 <i class="uil uil-comment-alt-chart-lines"></i>
                 Actividades
             </a>
@@ -115,7 +115,7 @@
                 Reportes
               </div>
               <li class="item">
-                <a href="#" target="myFrame">
+                <a href="ControladorKardex?menu=Kardex&accion=Listar" target="myFrame">
                     <i class="uil uil-chart"></i>
                     Kardex
                 </a>

@@ -5,29 +5,24 @@
  */
 package Controlador;
 
-import Modelo.ApiReniecSunat;
-import Modelo.Autos;
 import Modelo.Compras;
 import Modelo.DetalleCompra;
-import Modelo.Empleados;
-import Modelo.Empresas;
 import Modelo.Materiales;
 import Modelo.Proveedores;
-import Modelo.TipoEmpleado;
-import ModeloDao.ApiDNIRUC;
-import ModeloDao.AutosDao;
 import ModeloDao.ComprasDao;
 import ModeloDao.DetalleComprasDao;
-import ModeloDao.EmpleadosDao;
-import ModeloDao.EmpresasDao;
 import ModeloDao.MaterialesDao;
-import ModeloDao.TipoEmpleadoDao;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 
 
 /**
@@ -47,6 +42,7 @@ public class ControladorCompraRegistro extends HttpServlet {
     
             
     int id;
+    int listaCompraId;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -69,22 +65,61 @@ public class ControladorCompraRegistro extends HttpServlet {
                         request.setAttribute("listaMateriales", listaMateriales);
                     break;
                     case "Agregar":
-//                        String matricula = request.getParameter("txtMatricula");
-//                        String marca = request.getParameter("txtMarca");
-//                        String modelo = request.getParameter("txtModelo");
-//                        String empresa = request.getParameter("txtEmpresas");
-//                        String generacion = request.getParameter("txtGeneracion");
-//                        autos.setMatricula(matricula);
-//                        autos.setIdMarca(Integer.parseInt(marca));
-//                        autos.setIdModelo(Integer.parseInt(modelo));
-//                        autos.setIdEmpresa(Integer.parseInt(empresa));
-//                        autos.setGeneracion(generacion);
-//                        boolean registrar = autosDao.Registrar(autos);
-//                        if(registrar){
-//                            request.setAttribute("MensajeConfirmacion", "Registrado");
-//                        }else{
-//                            request.setAttribute("MensajeError", "Error en Registro");
-//                        }
+                    String IdProveedor = request.getParameter("txtProveedor");
+                    String Fecha = request.getParameter("txtFecha");
+                    String serie = request.getParameter("txtSerie");
+                    String Correlativo = request.getParameter("txtCorrelativo");
+                    String Total = request.getParameter("txtTotal");
+
+                    compras.setIdProveedores(Integer.parseInt(IdProveedor));
+                    compras.setFecha(Fecha);
+                    compras.setSerie(serie);
+                    compras.setCorrelativo(Integer.parseInt(Correlativo));
+                    compras.setTotal(Double.parseDouble(Total));
+
+                    boolean registroExitoso = comprasDao.Registrar(compras);
+
+                    if(registroExitoso){
+                        int IdCompra = comprasDao.listarCompras();
+                        
+                        String tablaComprasJson = request.getParameter("tablaCompras");
+                        List<Map<String, String>> tablaCompras = new ArrayList<>();
+
+                        if (tablaComprasJson != null) {
+                            tablaCompras = new Gson().fromJson(tablaComprasJson, 
+                                    new TypeToken<List<Map<String, String>>>() {}.getType());
+                        }
+
+                        // Acceder a los datos de cada fila de la tabla
+                        for (Map<String, String> fila : tablaCompras) {
+                            String idMateriales = fila.get("id");
+                            String cantidad = fila.get("cantidad");
+                            String precio = fila.get("precio");
+                            String subtotal = fila.get("subtotal");
+                            
+                            detalleCompra = new DetalleCompra();
+                            detalleCompra.setIdMateriales(Integer.parseInt(idMateriales));
+                            detalleCompra.setIdCompras(IdCompra);
+                            detalleCompra.setCatidad(Integer.parseInt(cantidad));
+                            detalleCompra.setPrecio(Double.parseDouble(precio));
+                            detalleCompra.setSubtotal(Double.parseDouble(subtotal));
+                            
+                            boolean RegistroDetalle = detalleComprasDao.Registrar(detalleCompra);
+                            
+                            boolean AumentarStock = detalleComprasDao.Editar(detalleCompra.getCatidad(), 
+                                    detalleCompra.getIdMateriales());
+                            
+                            
+                            if(RegistroDetalle =! true) {
+                                request.setAttribute("MensajeError", "Error en Registro");
+                            }
+                        }
+                                request.setAttribute("MensajeConfirmacion", "Registrado");
+                                
+                    } else {
+                        request.setAttribute("MensajeError", "Error en Registro");
+                    }
+
                     break;
                 }
                 request.getRequestDispatcher("Vista/Modules/Documentos/Compras/Componentes/Page/RegistroCompras/RegistroCompras.jsp").forward(request, response);

@@ -43,6 +43,7 @@ h2 {
 .FormularioRegistro input[type="text"],
 .FormularioRegistro input[type="number"],
 .FormularioRegistro input[type="date"],
+.FormularioRegistro input[type="file"],
 .FormularioRegistro select {
     width: 100%;
     padding: 6px; /* Ajusta el tamaño del padding */

@@ -7,108 +7,97 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Registro de Actividades</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+        />
+       <link rel="stylesheet" 
+            href="Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/ListadoDatosClientes/MostrarClientes.css" 
+        />
+    </head>
+    <body>
+        <br>
+        <br>
+        <br>
+    <article class="encabezado-principal">
+      <div class="grupo-principal">
+        <div class="icono-encabezado">
+          <i class="uil uil-shopping-cart"></i>
+        </div>
+        <p>ACTIVIDADES</p>
+      </div>
+      <div class="grupo-boton-nuevo">
+        <button onclick="window.location.href='ControladorCompraRegistro?menu=CompraRegistro&accion=Formulario'">
+            <i class="uil uil-plus"></i>
+            Nuevo
+        </button>
+      </div>
+    </article>
+    <article class="opciones-listado">
+      <div class="grupo-boton-nuevo">
+        <button onclick="window.location.href='ControladorCompras?menu=Compras&accion=Listar'">
+            <i class="uil uil-list-ul"></i>
+            Listar Todo
+        </button>
+      </div>
+      <form action="ControladorEmpresas?menu=Empresas" method="POST">  
+        <div class="grupo-buscar">
+          <input type="search" placeholder="Ingresar la Razón Social a Buscar" name="txtBuscar"/>
+          <button type="submit" name="accion" value="Buscar"><i class="uil uil-search"></i>Buscar</button>
+        </div>
+       </form>
+    </article>
 
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
+    <article class="bg-container-body">
+      <div class="container-body">
+        <table class="table table-striped table-inverse table-responsive">
+          <thead class="thead-inverse">
+            <tr>
+              <th>Empresa</th> 
+              <th>Actividad</th>
+              <th>Auto</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </article>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="Vista/Modules/Configuracion/ConfiguracionOtros/Clientes/Componentes/Page/ListadoDatosClientes/MostrarClientes.js" 
+                type="text/javascript">
+        </script>
+        <%-- Verificar si existe el mensaje --%>
+        <% if (request.getAttribute("mensaje") != null) { %>
+          <%-- Obtener el mensaje de la solicitud --%>
+          <% String mensaje = (String) request.getAttribute("mensaje"); %>
 
-        th {
-            background-color: #f2f2f2;
-        }
-
-        form {
-            margin-bottom: 20px;
-        }
-
-        input[type="text"], select, textarea {
-            width: 300px;
-        }
-
-        input[type="submit"] {
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
-    <h1>Registro de Actividades</h1>
-
-    <h2>Autos</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-        </tr>
-        <!-- Aquí puedes insertar código para mostrar los datos de la tabla de autos -->
-    </table>
-
-    <h2>Empleados</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-        </tr>
-        <!-- Aquí puedes insertar código para mostrar los datos de la tabla de empleados -->
-    </table>
-
-    <h2>Actividades</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Auto</th>
-            <th>Descripción de Actividad</th>
-            <th>Materiales</th>
-            <th>Cantidad de Actividades</th>
-            <th>Precio</th>
-            <th>Total</th>
-        </tr>
-        <!-- Aquí puedes insertar código para mostrar los datos de la tabla de actividades -->
-    </table>
-
-    <h2>Registrar Actividad</h2>
-    <form action="ruta_a_tu_servlet_o_script" method="POST">
-        <label>Cliente:</label>
-        <input type="text" name="cliente" required><br>
-
-        <label>Auto:</label>
-        <select name="auto" required>
-            <!-- Aquí puedes insertar código para mostrar opciones de autos -->
-        </select><br>
-
-        <label>Descripción de Actividad:</label>
-        <textarea name="descripcion" required></textarea><br>
-
-        <label>Materiales:</label>
-        <textarea name="materiales" required></textarea><br>
-
-        <label>Cantidad de Actividades:</label>
-        <input type="number" name="cantidad" required><br>
-
-        <label>Precio:</label>
-        <input type="number" name="precio" required><br>
-
-        <label>Total:</label>
-        <input type="number" name="total" required><br>
-
-        <input type="submit" value="Registrar">
-    </form>
-</body>
+          <%-- Mostrar el mensaje utilizando SweetAlert --%>
+          <script>
+            Swal.fire({
+              icon: 'warning',
+              title: 'Mensaje',
+              text: '<%= mensaje %>',
+              confirmButtonText: 'Aceptar'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                // Redirigir a la URL después de hacer clic en "Aceptar"
+                window.location.href = 'ControladorEmpresas?menu=Empresas&accion=Listar';
+              }
+            });
+          </script>
+        <% } %>
+        
+    </body>
 </html>
+

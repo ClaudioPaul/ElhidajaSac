@@ -91,6 +91,7 @@ public class DetalleComprasDao {
         }
         return listacompra;
     }
+    
     public List<DetalleCompra> listar() {
         ArrayList<DetalleCompra> listaDetalle =new ArrayList();
         DetalleCompra detalleCompra;
@@ -117,4 +118,20 @@ public class DetalleComprasDao {
         return listaDetalle;
     }
     
+    public boolean Editar(int stock, int id) {
+        try {
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{ call AumentarStock(?,?)}");
+            cs.setInt(1, stock);
+            cs.setInt(2, id);
+            
+            int numFAfectadas = cs.executeUpdate();
+
+            if(numFAfectadas>0){
+                return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
 }
